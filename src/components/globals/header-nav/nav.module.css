@@ -1,0 +1,13 @@
+.navitem {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  margin: 20px 0;
+  padding: 8px 14px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: .5s;
+  z-index: 1;
+}

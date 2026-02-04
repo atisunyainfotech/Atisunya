@@ -1,0 +1,37 @@
+.tabImageContent h5 {
+  transform: translateY(200%);
+  transition: transform 0.4s ease;
+  opacity: 0;
+}
+.tabImageContent p {
+  transform: translateY(-200%);
+  transition: transform 0.4s ease;
+  transition-delay: 0.1s;
+  opacity: 0;
+}
+
+.tabImageContent.active h5,
+.tabImageContent.active p {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.tabImage {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.tabImage.active {
+  opacity: 1;
+}
+
+.progressLine {
+  animation: animateLine 6s linear forwards;
+}
+
+@keyframes animateLine {
+  to {
+    width: 100%;
+  }
+}
