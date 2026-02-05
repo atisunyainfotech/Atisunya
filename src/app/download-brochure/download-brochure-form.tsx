@@ -29,8 +29,8 @@ export default function DownloadBrochureForm() {
     }
 
     const link = document.createElement("a");
-    link.href = "/jamisu-brochure.pdf";
-    link.download = "Jamisu-Brochure.pdf";
+    link.href = "/AtiSunyaInfotech-brochure.pdf";
+    link.download = "AtiSunyaInfotech-Brochure.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
