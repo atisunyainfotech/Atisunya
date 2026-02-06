@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
 import { Golos_Text, Inter } from "next/font/google";
-import "./globals.css"
+import Script from "next/script";
+import "./globals.css";
+
 import Footer from "@/components/globals/footer";
 import Navbar from "@/components/globals/header-nav";
 
-
 const golosText = Golos_Text({
-  weight : ["400", "500", "600", "700"],
-  variable : "--font-primary",
-  subsets : ["latin"]
-})
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-primary",
+  subsets: ["latin"],
+});
 
 const inter = Inter({
-  weight : ["200", "300", "400", "500", "600", "700"],
-  variable : "--font-secondary",
-  subsets : ["latin"]
-})
-
-
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-secondary",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,17 +25,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${golosText.variable} ${inter.variable} antialiased text-blue font-secondary`}
       >
         <Navbar />
-          {children}
+        {children}
         <Footer />
+
+        {/* 🔹 Tidio Chatbot */}
+        <Script
+          src="//code.tidio.co/nqifyiiawgxr4or0y0biybdnlhklgmys.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
