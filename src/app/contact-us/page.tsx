@@ -72,23 +72,7 @@ const ContactUsPage = () => {
               <br />
               INDIA
             </p>
-          </div>
-          {/* <div className="space-y-3 bg-white-secondary/20 p-4 rounded-md">
-            <Image
-              src={PinIcon}
-              alt=""
-              width={40} height={40}
-            />
-            <p className="text-15">
-              Tower - D, The Golden Palm Sector - 168,
-              <br />
-              Noida - 201304
-              <br />
-              INDIA
-            </p>
-          </div> */}
-
-          
+          </div>      
         </div>
 
        </div>
