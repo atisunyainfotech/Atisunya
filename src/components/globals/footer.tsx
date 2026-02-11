@@ -72,7 +72,7 @@ const Footer = () => {
           <div className="text-sm text-white/90 max-w-xs">
             <h5 className="text-yellow text-xl mb-2">📍Noida </h5>
             <p>
-              AtiSunya Pvt Ltd 
+              AtiSunya Infotech Pvt Ltd 
               <br />
               A-522 , Tower-A,
               Logix Technova,

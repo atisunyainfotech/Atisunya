@@ -24,7 +24,6 @@ const Carousel = () => {
 
   return (
     <section className="container entities py-14 relative">
-      <h3 className="text-2xl font-semibold mb-12 text-center">Our <span className="text-yellow"> Services </span></h3>
       <Image className="absolute left-0 bottom-0 z-10" src={LeftGradient} alt="" width={80} height={204} />
       <Image className="absolute right-0 bottom-0 z-10" src={RightGradient} alt="" width={80} height={204} />
       <div className="embla relative" ref={emblaRef}>
