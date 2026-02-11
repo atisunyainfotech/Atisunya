@@ -25,7 +25,7 @@ const OurServices = () => {
           <article className={cardClass}>
             <h4 className="font-semibold text-4xl">ERP <br /> Implementation</h4>
             <p className="text-white px-2 py-3 min-h-72 text-lg transition duration-400 bg-yellow">
-              Expert ERP implementation across Microsoft Dynamics 365, Salesforce, Zoho, and Oracle NetSuite is provided by Jamisu Tech. For businesses to succeed in the cutthroat digital age of today, we guarantee smooth integration, data migration, and tailored solutions that optimize processes, boost output, and spur company expansion
+              Expert ERP implementation across Microsoft Dynamics 365, Salesforce, Zoho, and Oracle NetSuite is provided by AtiSunya Infotech . For businesses to succeed in the cutthroat digital age of today, we guarantee smooth integration, data migration, and tailored solutions that optimize processes, boost output, and spur company expansion
             </p>
 
             <Image src={ERPImplementationImage} layout="fill" alt="erp implemenation" className="object-cover -z-10 transition" />
@@ -39,7 +39,7 @@ const OurServices = () => {
           <article className={cardClass}>
             <h4 className=" font-semibold text-4xl">ERP <br /> Integration</h4>
             <p className="text-white px-2 py-3 min-h-72 text-lg transition duration-400 bg-yellow">
-              Oracle NetSuite, Salesforce, Zoho, and Microsoft Dynamics 365 can all be seamlessly integrated with your current systems using Jamisu Tech. Our professional methodology guarantees seamless data flow, increased productivity, and real-time insights, enabling companies to attain operational excellence and make more informed decisions.
+              Oracle NetSuite, Salesforce, Zoho, and Microsoft Dynamics 365 can all be seamlessly integrated with your current systems using AtiSunya Infotech . Our professional methodology guarantees seamless data flow, increased productivity, and real-time insights, enabling companies to attain operational excellence and make more informed decisions.
             </p>
             <Image src={ERPIntegrationImage} layout="fill" alt="erp implemenation" className="object-cover -z-20 transition" />
 
