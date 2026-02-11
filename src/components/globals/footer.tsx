@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import oracleIcon from "@/assets/services-icons/oracle.jpg";
-import MicrosoftIcon from "@/assets/services-icons/microsoft-dynamic.jpg";
+import MicrosoftIcon from "@/assets/services-icons/microsoft-dynamic.png";
 import ZohoIcon from "@/assets/services-icons/zoho.png";
 import CeligoIcon from "@/assets/services-icons/celigo.png";
 import SalesforceIcon from "@/assets/services-icons/salesforce.png";
