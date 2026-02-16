@@ -148,13 +148,14 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex gap-4">
             {[
-              {
-                href: "https://www.instagram.com/atisunyainfotech/",
-                src: "/Instgram.jpg",
-              },
+              
               {
                 href: "https://www.linkedin.com/company/atisunya-infotech-private-limited/",
                 src: "/Linkedln.png",
+              },
+              {
+                href: "https://www.instagram.com/atisunyainfotech/",
+                src: "/Instgram.jpg",
               },
               {
                 href: "https://wa.me/919021023513",
