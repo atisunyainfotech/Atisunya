@@ -1,41 +1,30 @@
 
 import Image, { StaticImageData } from "next/image";
-import AthleticLogo from "@/assets/brand-logos/athletic.webp"
-import BurleighLogo from "@/assets/brand-logos/burleigh.webp"
-import BuzzballLogo from "@/assets/brand-logos/buzzball.webp";
-import ColoradoLogo from "@/assets/brand-logos/colorado.webp";
-import CraftLogo from "@/assets/brand-logos/craft.webp";
-import ExclusiveResortsLogo from "@/assets/brand-logos/exclusive-resorts.webp";
-import FarNienteLogo from "@/assets/brand-logos/far-niente.webp";
-import FerrandLogo from "@/assets/brand-logos/ferrand.webp";
-import HenhouseLogo from "@/assets/brand-logos/henhouse.webp";
-import ImperialLogo from "@/assets/brand-logos/imperial.webp";
-import LightdeckLogo from "@/assets/brand-logos/lightdeck.webp";
-import PernodLogo from "@/assets/brand-logos/pernod.webp";
-import RemedyLogo from "@/assets/brand-logos/remedy.webp";
-import SurfsideLogo from "@/assets/brand-logos/surfside.webp";
-import TheVinesLogo from "@/assets/brand-logos/thevines.webp";
-import TyrerellsLogo from "@/assets/brand-logos/tyrerells.webp";
+import ADBCLogo from "@/assets/brand-logos/ADBC.jpg"
+import AlfahhadLogo from "@/assets/brand-logos/alfahhad holding group.png"
+import BHAGWATILogo from "@/assets/brand-logos/BHAGWATI.png";
+import BharatLogo from "@/assets/brand-logos/Bharat.png";
+import brownbitesLogo from "@/assets/brand-logos/brown bites.jpg";
+import CharteredLogo from "@/assets/brand-logos/Chartered Accountant.png";
+import daikinLogo from "@/assets/brand-logos/daikin.png";
+import DUBAILogo from "@/assets/brand-logos/DUBAIPOLICE.png";
+import GOLOBALLogo from "@/assets/brand-logos/global knowledge.png";
+import GRANDLogo from "@/assets/brand-logos/grandmaster.jpg";
+
 
 const BrandLogos = () => {
 
   const images = [
-    AthleticLogo,
-    BurleighLogo,
-    BuzzballLogo,
-    ColoradoLogo,
-    CraftLogo,
-    ExclusiveResortsLogo,
-    FarNienteLogo,
-    FerrandLogo,
-    HenhouseLogo,
-    ImperialLogo,
-    LightdeckLogo,
-    PernodLogo,
-    RemedyLogo,
-    SurfsideLogo,
-    TheVinesLogo,
-    TyrerellsLogo,
+ ADBCLogo ,
+ AlfahhadLogo ,
+ BHAGWATILogo ,
+ BharatLogo ,
+ brownbitesLogo ,
+ CharteredLogo ,
+ daikinLogo ,
+ DUBAILogo ,
+ GOLOBALLogo ,
+ GRANDLogo, 
   ]
   return (
     <section className="container flex flex-col items-center gap-10 py-24">

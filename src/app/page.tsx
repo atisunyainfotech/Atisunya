@@ -11,7 +11,9 @@ import Carousel from "./_components/carousel";
 // import AboutUs from "./_components/about-us";
 import Products from "./_components/products";
 import Initiatives from "./_components/initiatives";
-
+import Testimonial from "./_components/testimonial";
+import BrandLogos from "./_components/brand-logos";
+import IndustryExpertise from "./_components/industries";
 
 export const metadata: Metadata = {
   title: 'AtiSunya Infotech Pvt Ltd ',
@@ -29,6 +31,9 @@ export default function Home() {
       <OurServices />
       <Initiatives />
       <WhatMakesUsDifferent />
+      <BrandLogos/>
+      <Testimonial/>
+      <IndustryExpertise/>
       {/* <AboutUs /> */}
 
       <Products />

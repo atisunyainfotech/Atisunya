@@ -1,174 +1,204 @@
 "use client";
 
-import Image from "next/image"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
-import Tag from "@/components/globals/Tag";
-import { useEffect, useRef, useState } from "react";
-import styles from "./styles.module.css";
-import cardsData from "./cardsData";
+import Netsuite from "@/assets/dashboards/netsuite-dashboard.avif";
+import Dynamics from "@/assets/dashboards/dynamics-dashboard.png";
+import Salesforce from "@/assets/dashboards/salesforce-dashboard.webp";
+import SAP from "@/assets/dashboards/sap-dashboard.png";
 
-import ChevronIcon from "@/assets/icons/chevron.svg"
-import ProgressLine from "./ProgressLine";
-import Link from "next/link";
+const tabs = [
+  {
+    id: "netsuite",
+    label: "Oracle NetSuite",
+    title: "Enterprise Transformation with Cloud ERP.",
+    description:
+      "Delivered a full-scale Oracle NetSuite implementation covering finance, procurement, inventory and reporting — enabling real-time business visibility.",
+    stat: "45%",
+    statText: "Operational Efficiency Boost",
+    image: Netsuite,
+  },
+  {
+    id: "dynamics",
+    label: "Microsoft Dynamics 365",
+    title: "Intelligent Business Automation.",
+    description:
+      "Automated finance and supply chain workflows using Dynamics 365, improving compliance, forecasting and cross-team collaboration.",
+    stat: "60%",
+    statText: "Reduction in Manual Processes",
+    image: Dynamics,
+  },
+  {
+    id: "salesforce",
+    label: "Salesforce CRM",
+    title: "Revenue Acceleration Through Smart CRM.",
+    description:
+      "Integrated Salesforce CRM with ERP systems to create a unified data environment and improve pipeline visibility.",
+    stat: "30%",
+    statText: "Increase in Sales Productivity",
+    image: Salesforce,
+  },
+  {
+    id: "sap",
+    label: "SAP Integration",
+    title: "Seamless Enterprise System Integration.",
+    description:
+      "Connected SAP with third-party platforms, payment gateways and logistics systems for unified enterprise operations.",
+    stat: "50%",
+    statText: "Faster Implementation Cycle",
+    image: SAP,
+  },
+];
 
-
-const ConsultingCards = () => {
-
-  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-
-  const cardsWrapperRef = useRef<HTMLDivElement>(null);
-
-  const intervalId = useRef<null | NodeJS.Timeout>(null);
-
-  const getHeight = (index: number) => {
-
-    if (!cardsWrapperRef.current) return '0px'
-
-    const paragraph = cardsWrapperRef.current.querySelector(`article:nth-of-type(${index}) p`) as HTMLParagraphElement;
-
-    return `${paragraph.offsetHeight}px`
-
-  }
-
-
-  const handleTabClick = (index: number) => {
-
-    setCurrentIndex(index);
-    if (intervalId.current) {
-      clearInterval(intervalId.current);
-      intervalId.current = null;
-    }
-
-    intervalId.current = setInterval(() => {
-
-      setCurrentIndex(prev => {
-        if (prev === cardsData.length - 1) {
-          return 0
-        } else {
-          return prev! + 1
-        }
-      })
-    }, 6000)
-
-  }
-
-  useEffect(() => {
-
-    setCurrentIndex(0)
-    intervalId.current = setInterval(() => {
-
-      setCurrentIndex(prev => {
-        if (prev === cardsData.length - 1) {
-          return 0
-        } else {
-          return prev! + 1
-        }
-      })
-    }, 6000)
-
-    return () => {
-      if (intervalId.current) {
-        clearInterval(intervalId.current);
-      }
-    }
-
-  }, [])
-
+export default function PremiumERPCaseStudies() {
+  const [active, setActive] = useState(tabs[0]);
 
   return (
-    <section id="solutions" className="tabsection py-14 text-blue overflow-hidden">
-      <div className="container">
-        <h2 className="text-3xl lg:text-4xl font-medium">
-          Where Expertise Meets Execution-
-          <br />
-          <span className="text-yellow">Your ERP Consulting Arm</span>
-        </h2>
+    <section className="py-28 bg-white">
 
-        <div className="grid lg:grid-cols-2 ">
-          <div className="mt-16 ">
-            <Tag text="Our Expertise" />
-            <div ref={cardsWrapperRef} className="mt-6 lg:pr-20">
-              {
-                cardsData.map(card => <TabArticle
-                  key={card.index}
-                  isActive={currentIndex === card.index}
-                  card={card}
-                  getHeight={getHeight}
-                  handleTabClick={handleTabClick.bind(null, card.index)}
-                />)
-              }
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto px-6">
 
-          <div className="relative w-full h-[400px] lg:min-h-[650px] max-lg:mt-8">
-            <figure
-              className="relative w-full h-full"
+        {/* Header */}
+        <div className="mb-20 max-w-3xl">
+
+          <p
+            className="text-sm uppercase tracking-[0.35em] font-semibold mb-4"
+            style={{ color: "#2F7F78" }}
+          >
+            Case Studies
+          </p>
+
+          <h2
+            className="text-4xl lg:text-5xl font-semibold leading-tight"
+            style={{ color: "#002050" }}
+          >
+            Delivering Measurable ERP Impact
+          </h2>
+
+          <p className="mt-6 text-gray-600 text-lg leading-relaxed">
+            We empower enterprises with scalable ERP ecosystems, intelligent
+            automation and seamless system integrations across global platforms.
+          </p>
+
+        </div>
+
+        {/* Tabs */}
+        <div className="flex flex-wrap gap-10 border-b border-gray-200 mb-16">
+
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActive(tab)}
+              className={`relative pb-5 text-sm font-medium transition-all duration-300 ${
+                active.id === tab.id
+                  ? "text-[#002050]"
+                  : "text-gray-500 hover:text-[#2F7F78]"
+              }`}
             >
-              {
-                cardsData.map((item) => (
-                  <Image key={item.index} src={item.image} alt={item.title} layout="fill"
-                    className={`object-cover ${styles.tabImage} ${item.index === currentIndex && styles.active}`}
-                  />
-                ))
-              }
-            </figure>
+              {tab.label}
 
-            {
-              cardsData.map((item, index) => (
-                <div key={index} className={`${styles.tabImageContent} ${item.index === currentIndex && styles.active} absolute h-full w-full flex flex-col justify-between top-0 left-0 p-5`}>
-                  <p className="text-white max-w-sm ml-auto text-right tracking-tight text-lg invisible">{item.description}</p>
-                  <h5 className="text-4xl text-white">{item.title}</h5>
+              {active.id === tab.id && (
+                <motion.div
+                  layoutId="underline"
+                  className="absolute left-0 bottom-0 w-full h-[3px] rounded-full"
+                  style={{ backgroundColor: "#fbc02d" }}
+                />
+              )}
+            </button>
+          ))}
+
+        </div>
+
+        {/* Premium Card */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* Text Section */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.id}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -25 }}
+              transition={{ duration: 0.35 }}
+            >
+
+              <h3
+                className="text-3xl lg:text-4xl font-semibold mb-6"
+                style={{ color: "#002050" }}
+              >
+                {active.title}
+              </h3>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                {active.description}
+              </p>
+
+              {/* Stat */}
+              <div className="flex items-center gap-8">
+
+                <div className="flex flex-col">
+
+                  <span
+                    className="text-5xl font-bold"
+                    style={{ color: "#2F7F78" }}
+                  >
+                    {active.stat}
+                  </span>
+
+                  <span className="w-16 h-[3px] bg-[#fbc02d] mt-2 rounded-full"></span>
+
                 </div>
-              ))
-            }
-          </div>
+
+                <span className="text-gray-600 text-sm uppercase tracking-wide max-w-[160px]">
+                  {active.statText}
+                </span>
+
+              </div>
+
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Dashboard Frame */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.id + "-image"}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35 }}
+              className="flex justify-center"
+            >
+
+              <div className="relative w-full max-w-[560px] aspect-[16/10]">
+
+                {/* Frame */}
+                <div className="absolute inset-0 rounded-2xl border border-gray-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]"></div>
+
+                {/* Dashboard */}
+                <div className="absolute inset-4 rounded-xl overflow-hidden bg-gray-50 flex items-center justify-center">
+
+                  <Image
+                    src={active.image}
+                    alt="ERP Dashboard"
+                    width={1000}
+                    height={650}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+
+                </div>
+
+              </div>
+
+            </motion.div>
+          </AnimatePresence>
+
         </div>
-        <div className="mt-5 flex max-lg:justify-center">
-          <Link href={"/contact-us"} className="text-blue bg-yellow font-medium px-4 py-2 rounded-md">
-            Book a call
-          </Link>
-        </div>
+
       </div>
+
     </section>
-  )
-}
-
-export default ConsultingCards
-
-
-
-type TabArticleProps = {
-  isActive: boolean
-  card: typeof cardsData[number]
-  getHeight: (index: number) => string
-
-  handleTabClick: () => void
-}
-
-const TabArticle = ({ card, isActive, getHeight, handleTabClick }: TabArticleProps) => {
-  return (
-    <article key={card.index} className="py-8 border-y border-border-light relative">
-      <div onClick={handleTabClick} className={`flex justify-between items-center cursor-pointer ${isActive ? 'opacity-100' : 'opacity-30'}`}>
-        <div className={`flex gap-x-6 items-center transition-opacity duration-400`}>
-          <Image src={card.icon} alt={card.title} className={`transition-all object-contain  ${isActive ? "w-10 h-10 lg:h-14 lg:w-14" : 'w-7 h-7 lg:h-9 lg:w-9'}`} />
-          <h3 className={`transition-all duration-400 ${isActive ? "text-xl lg:text-2xl" : "text-base lg:text-lg"} font-medium  text-blue`}>{card.title}</h3>
-
-        </div>
-        <Image src={ChevronIcon} alt="" width={14} height={14}
-          className={`transition-transform duration-300 ${isActive ? 'rotate-0' : 'rotate-180'}`}
-        />
-      </div>
-      <div
-        style={{
-          height: isActive ? getHeight(card.index + 1) : '0px',
-          transition: "height 0.4s ease"
-        }}
-        className={`overflow-hidden transition transition-height duration-400`}
-      >
-        <p className=" lg:w-10/12 text-gray pt-4 max-lg:text-sm">{card.description}</p>
-      </div>
-      {isActive && <ProgressLine />}
-
-    </article>
-  )
+  );
 }

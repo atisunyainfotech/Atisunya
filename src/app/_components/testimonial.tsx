@@ -1,55 +1,144 @@
-/**
-import ButtonLink from "@/components/ButtonLink";
+"use client";
 
-const Testimonial = () => {
-  return (
-    <section className="container flex flex-col items-center gap-6 py-24 sm:gap-7">
-    <div className="flex flex-col gap-3 font-primary">
-      <span className="font-bold uppercase text-yellow/70 text-center">Testimonials</span>
-      <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
-        What our clients say
-      </h2>
-    </div>
-    <div className="mt-6">
-      <TestimonialCard />
-    </div>
-  </section>
-  )
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+interface Testimonial {
+  name: string;
+  title: string;
+  company: string;
+  image: string;
+  text: string;
 }
 
-export default Testimonial;
+const testimonials: Testimonial[] = [
+  {
+    name: "Zahir Mirza",
+    title: "Marketing Director",
+    company: "AtiSunya Infotech",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    text: "AtiSunya Infotech helped streamline our ERP workflows and significantly improved our operational efficiency.",
+  },
+  {
+    name: "Emily Rogers",
+    title: "Head of Product",
+    company: "AtiSunya Infotech",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    text: "The team delivered a powerful ERP implementation tailored perfectly to our business requirements.",
+  },
+  {
+    name: "Michael Lee",
+    title: "Operations Manager",
+    company: "AtiSunya Infotech",
+    image: "https://randomuser.me/api/portraits/men/46.jpg",
+    text: "From planning to execution, AtiSunya Infotech ensured the entire ERP journey was seamless.",
+  },
+  {
+    name: "Sophia Carter",
+    title: "Finance Director",
+    company: "AtiSunya Infotech",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: "Their ERP expertise gave us real-time financial insights and better operational visibility.",
+  },
+  {
+    name: "Daniel Kim",
+    title: "CEO",
+    company: "AtiSunya Infotech",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    text: "AtiSunya Infotech proved to be a reliable technology partner delivering consistent results.",
+  },
+];
 
+export default function TestimonialCarousel() {
 
+  const [pause, setPause] = useState(false);
 
-// interface TestimonialCardProps {
-//   name: string;
-//   username: string;
-//   image: string;
-//   text: string;
-// }
-
-export function TestimonialCard() {
   return (
-    <article className={"shadow-lg bg-yellow rounded-2xl text-white pb-7 font-secondary border border-gray-100 text-lg leading-7 md:text-xl md:leading-8"}>
-      <div className="flex flex-col items-start gap-5 p-7 ">
-        <p className="">
-          “The other reason that we chose NetSuite + Crafted ERP was Doozy Solutions, the team that
-          supports Crafted. Both from their industry experience and their overall talent and
-          objectives helping us get our jobs done effectively was a win-win for us. They help us get
-          whatever we need done, and if there&apos;s something we have not implemented, they&apos;re the first
-          to jump in and help us out.”
-        </p>
+    <section className="py-28 bg-gray-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <p className="uppercase text-sm font-semibold tracking-widest text-[#2F7F78]">
+            Testimonials
+          </p>
+
+          <h2 className="text-4xl font-bold text-[#002050] mt-3">
+            What our clients say
+          </h2>
+
+          <div className="w-24 h-[3px] bg-[#fbc02d] mx-auto mt-6 rounded-full"></div>
+        </div>
+
+        {/* Carousel */}
+        <motion.div
+          className="flex gap-8"
+          animate={!pause ? { x: ["0%", "-50%"] } : {}}
+          transition={{
+            repeat: Infinity,
+            duration: 30,
+            ease: "linear",
+          }}
+          onMouseEnter={() => setPause(true)}
+          onMouseLeave={() => setPause(false)}
+        >
+          {[...testimonials, ...testimonials].map((t, index) => (
+
+            <motion.div
+              key={index}
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="min-w-[320px] md:min-w-[380px] bg-white rounded-2xl 
+              border-2 border-[#fbc02d] shadow-md hover:shadow-xl p-8
+              hover:border-[#2F7F78] transition-all duration-300"
+            >
+
+              {/* Quote */}
+              <div className="text-4xl text-[#fbc02d] mb-4">
+                ❝
+              </div>
+
+              {/* Text */}
+              <p className="text-gray-600 leading-relaxed">
+                {t.text}
+              </p>
+
+              {/* Stars */}
+              <div className="flex gap-1 mt-4 text-[#fbc02d]">
+                ⭐ ⭐ ⭐ ⭐ ⭐
+              </div>
+
+              {/* Profile */}
+              <div className="flex items-center gap-4 mt-6">
+
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-11 h-11 rounded-full object-cover border-2 border-[#2F7F78]"
+                />
+
+                <div>
+                  <h4 className="font-semibold text-[#002050]">
+                    {t.name}
+                  </h4>
+
+                  <p className="text-sm text-gray-600">
+                    {t.title}
+                  </p>
+
+                  <p className="text-sm text-gray-600">
+                    {t.company}
+                  </p>
+                </div>
+
+              </div>
+
+            </motion.div>
+
+          ))}
+        </motion.div>
+
       </div>
-      <div className="flex flex-col items-end pr-7 space-y-1">
-        <h5>- John Valdes</h5>
-        <h6>Vice President, Planning &amp; Operations</h6>
-        <h6>Samson &amp; Surrey</h6>
-      </div>
-      <div className="flex justify-center mt-5">
-        <ButtonLink href="" variant="white">Watch the story</ButtonLink>
-      </div>
-    </article>
+    </section>
   );
 }
-
- */
