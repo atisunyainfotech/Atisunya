@@ -5,10 +5,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 /* ============================= */
-/* SERVICES DATA */
+/* SERVICES DATA TYPES & DATA */
 /* ============================= */
 
-const services = [
+interface Service {
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
   {
     title: "Implementation",
     description:
@@ -89,19 +94,14 @@ export default function PremiumCorporateServices() {
 
         {/* CTA */}
         <div className="text-center mt-20">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
             <Link
               href="#hero"
               className="inline-block px-10 py-4 rounded-full
               bg-[#002050] text-white font-semibold
               relative overflow-hidden group"
             >
-              <span className="relative z-10">
-                Get Expert Guidance →
-              </span>
+              <span className="relative z-10">Get Expert Guidance →</span>
 
               {/* Gold hover slide */}
               <span className="absolute inset-0 bg-[#fbc02d] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
@@ -114,10 +114,15 @@ export default function PremiumCorporateServices() {
 }
 
 /* ============================= */
-/* SERVICE CARD */
+/* SERVICE CARD COMPONENT */
 /* ============================= */
 
-function ServiceCard({ service, delay }) {
+interface ServiceCardProps {
+  service: Service;
+  delay: number;
+}
+
+function ServiceCard({ service, delay }: ServiceCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -134,13 +139,9 @@ function ServiceCard({ service, delay }) {
       {/* Premium Gold Accent Line */}
       <div className="absolute left-0 top-0 h-full w-1 bg-[#fbc02d] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
 
-      <h3 className="text-xl font-bold text-[#002050] mb-4">
-        {service.title}
-      </h3>
+      <h3 className="text-xl font-bold text-[#002050] mb-4">{service.title}</h3>
 
-      <p className="text-gray-600 leading-relaxed text-sm">
-        {service.description}
-      </p>
+      <p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
 
       {/* Elegant Bottom Accent */}
       <div className="mt-6 h-[2px] w-12 bg-[#fbc02d] transition-all duration-300 group-hover:w-20" />

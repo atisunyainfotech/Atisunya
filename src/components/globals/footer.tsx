@@ -1,25 +1,34 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 import oracleIcon from "@/assets/services-icons/Oracle.png";
 import MicrosoftIcon from "@/assets/services-icons/Dynamic.png";
-import ZohoIcon from "@/assets/services-icons/ZOHO.png"
-import SalesforceIcon from "@/assets/services-icons/SALESFORCE.png"
+import ZohoIcon from "@/assets/services-icons/ZOHO.png";
+import SalesforceIcon from "@/assets/services-icons/SALESFORCE.png";
 import SapIcon from "@/assets/services-icons/SAP.png";
 import CeligoIcon from "@/assets/services-icons/Partner.png";
 import certificate from "@/assets/services-icons/certificate.png";
 
+const expertiseIcons: StaticImageData[] = [
+  oracleIcon,
+  MicrosoftIcon,
+  SapIcon,
+  CeligoIcon,
+  ZohoIcon,
+  SalesforceIcon,
+];
+
 const Footer = () => {
   return (
     <footer className="bg-[#0B1120] text-white">
-
       {/* Top Accent */}
-      <div className="h-[2px] w-full bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500"></div>
+      <div className="h-[2px] w-full bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500" />
 
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
 
+        {/* Main Grid */}
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 items-start">
 
           {/* Company */}
@@ -62,38 +71,29 @@ const Footer = () => {
             </h5>
 
             <div className="grid grid-cols-3 gap-6">
-              {[oracleIcon, MicrosoftIcon, SapIcon, CeligoIcon, ZohoIcon, SalesforceIcon].map(
-                (icon, index) => (
-                  <div key={index} className="group relative flex justify-start">
+              {expertiseIcons.map((icon, index) => (
+                <div key={index} className="group relative flex justify-start">
 
-                    <div className="absolute -inset-1 rounded-full 
-                      bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500
-                      opacity-0 blur-md 
-                      group-hover:opacity-70
-                      transition-all duration-500">
-                    </div>
+                  <div className="absolute -inset-1 rounded-full 
+                  bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500
+                  opacity-0 blur-md group-hover:opacity-70 transition-all duration-500" />
 
-                    <div className="relative w-16 h-16 rounded-full 
-                      bg-white
-                      overflow-hidden
-                      border border-gray-200
-                      transition-all duration-300
-                      group-hover:scale-110
-                      group-hover:border-yellow-400
-                      group-hover:shadow-[0_0_25px_rgba(250,204,21,0.6)]">
+                  <div className="relative w-16 h-16 rounded-full bg-white overflow-hidden
+                  border border-gray-200 transition-all duration-300
+                  group-hover:scale-110 group-hover:border-yellow-400
+                  group-hover:shadow-[0_0_25px_rgba(250,204,21,0.6)]">
 
-                      <Image
-                        src={icon}
-                        alt="ERP Logo"
-                        fill
-                        className="object-cover"
-                      />
-
-                    </div>
+                    <Image
+                      src={icon}
+                      alt="ERP Logo"
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
 
                   </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -143,7 +143,7 @@ const Footer = () => {
 
         </div>
 
-        {/* Certificate aligned with first column */}
+        {/* Certificate */}
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-14 mt-4 mb-8">
 
           <div className="flex justify-start">
@@ -154,6 +154,7 @@ const Footer = () => {
                   src={certificate}
                   alt="Certifications"
                   fill
+                  sizes="460px"
                   className="object-contain"
                 />
               </div>
@@ -161,14 +162,10 @@ const Footer = () => {
             </div>
           </div>
 
-          <div></div>
-          <div></div>
-          <div></div>
-
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700 my-10"></div>
+        <div className="border-t border-gray-700 my-10" />
 
         {/* Bottom Footer */}
         <div className="grid md:grid-cols-2 items-center gap-6">
@@ -204,9 +201,8 @@ const Footer = () => {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full overflow-hidden 
-                border border-gray-600 hover:border-yellow-400 
-                transition duration-300 hover:scale-110"
+                className="w-10 h-10 rounded-full overflow-hidden border border-gray-600
+                hover:border-yellow-400 transition duration-300 hover:scale-110"
               >
                 <Image
                   src={item.src}

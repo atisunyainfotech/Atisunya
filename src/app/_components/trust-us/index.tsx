@@ -2,7 +2,20 @@
 
 import { motion } from "framer-motion";
 
-const column1 = [
+/* ================= TYPES ================= */
+
+type Tool = {
+  name: string;
+  logo: string;
+};
+
+type SliderColumnProps = {
+  tools: Tool[];
+};
+
+/* ================= DATA ================= */
+
+const column1: Tool[] = [
   { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
   { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
@@ -15,7 +28,7 @@ const column1 = [
   { name: "Redis", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
 ];
 
-const column2 = [
+const column2: Tool[] = [
   { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
   { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
   { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -28,7 +41,7 @@ const column2 = [
   { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
 ];
 
-const column3 = [
+const column3: Tool[] = [
   { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
   { name: "Google Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
   { name: "Azure", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" },
@@ -41,15 +54,17 @@ const column3 = [
   { name: "DigitalOcean", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" },
 ];
 
-function SliderColumn({ tools }) {
+/* ================= SLIDER COLUMN ================= */
+
+function SliderColumn({ tools }: SliderColumnProps) {
   return (
     <div className="relative h-[520px] overflow-hidden">
 
       {/* top fade */}
-      <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10"/>
+      <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10" />
 
       {/* bottom fade */}
-      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10"/>
+      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10" />
 
       <motion.div
         animate={{ y: ["0%", "-50%"] }}
@@ -61,7 +76,6 @@ function SliderColumn({ tools }) {
         className="space-y-6"
       >
         {[...tools, ...tools].map((tool, index) => (
-
           <div
             key={index}
             className="
@@ -79,13 +93,14 @@ function SliderColumn({ tools }) {
             "
           >
 
-            {/* ICON WITH YELLOW TOUCH */}
+            {/* ICON */}
 
             <div className="relative flex items-center justify-center">
 
               <div className="absolute w-12 h-12 rounded-full bg-[#fbc02d]/20 blur-md opacity-60 group-hover:opacity-100 transition"></div>
 
-              <div className="
+              <div
+                className="
                 relative
                 flex items-center justify-center
                 w-11 h-11
@@ -95,7 +110,8 @@ function SliderColumn({ tools }) {
                 backdrop-blur-lg
                 group-hover:border-[#fbc02d]/40
                 transition
-              ">
+              "
+              >
                 <img
                   src={tool.logo}
                   alt={tool.name}
@@ -110,12 +126,13 @@ function SliderColumn({ tools }) {
             </p>
 
           </div>
-
         ))}
       </motion.div>
     </div>
   );
 }
+
+/* ================= MAIN COMPONENT ================= */
 
 export default function TechStackPremium() {
   return (
@@ -145,7 +162,7 @@ export default function TechStackPremium() {
             businesses across industries.
           </p>
 
-          <div className="mt-10 w-24 h-1 bg-[#fbc02d] rounded-full"/>
+          <div className="mt-10 w-24 h-1 bg-[#fbc02d] rounded-full" />
 
         </div>
 
@@ -153,9 +170,9 @@ export default function TechStackPremium() {
 
         <div className="grid grid-cols-3 gap-8">
 
-          <SliderColumn tools={column1}/>
-          <SliderColumn tools={column2}/>
-          <SliderColumn tools={column3}/>
+          <SliderColumn tools={column1} />
+          <SliderColumn tools={column2} />
+          <SliderColumn tools={column3} />
 
         </div>
 
