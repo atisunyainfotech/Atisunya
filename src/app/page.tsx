@@ -1,22 +1,17 @@
 import { Metadata } from "next";
-// import About from "./_components/about";
-// import AgricultureSuit from "./_components/agriculture-suit";
-import OurExpertise from "./_components/our-expertise";
 import Hero from "./_components/hero";
-import OurServices from "./_components/our-services";
+import Carousel from "./_components/carousel";
+import OurExpertise from "./_components/our-expertise";
 import TrustUs from "./_components/trust-us";
 import HowWeWork from "./_components/how-we-work";
-import WhatMakesUsDifferent from "./_components/WhatMakesUsDifferent";
-import Carousel from "./_components/carousel";
-// import AboutUs from "./_components/about-us";
-import Products from "./_components/products";
+import OurServices from "./_components/our-services";
 import Initiatives from "./_components/initiatives";
-import Testimonial from "./_components/testimonial";
-import BrandLogos from "./_components/brand-logos";
+import WhatMakesUsDifferent from "./_components/WhatMakesUsDifferent";
+import Products from "./_components/products";
 import IndustryExpertise from "./_components/industries";
 
 export const metadata: Metadata = {
-  title: 'AtiSunya Infotech Pvt Ltd ',
+  title: 'AtiSunya Infotech Pvt Ltd',
   description: 'AtiSunya Infotech delivers end-to-end ERP and digital transformation services across Oracle NetSuite, Zoho, Salesforce, Microsoft Dynamics 365, SAP, and the complete Microsoft ecosystem—helping businesses scale smarter and faster.',
 }
 
@@ -31,14 +26,8 @@ export default function Home() {
       <OurServices />
       <Initiatives />
       <WhatMakesUsDifferent />
-      <BrandLogos/>
-      <Testimonial/>
-      <IndustryExpertise/>
-      {/* <AboutUs /> */}
-
+      <IndustryExpertise />
       <Products />
-      {/* <AgricultureSuit /> */}
-      {/* <About /> */}
     </>
   );
 }
