@@ -5,8 +5,8 @@ import Link from "next/link";
 
 import oracleIcon from "@/assets/services-icons/Oracle.png";
 import MicrosoftIcon from "@/assets/services-icons/Dynamic.png";
-import ZohoIcon from "@/assets/services-icons/ZOHO.png";
-import SalesforceIcon from "@/assets/services-icons/SALESFORCE.png";
+// import ZohoIcon from "@/assets/services-icons/ZOHO.png";
+// import SalesforceIcon from "@/assets/services-icons/SALESFORCE.png";
 import SapIcon from "@/assets/services-icons/SAP.png";
 import CeligoIcon from "@/assets/services-icons/Partner.png";
 import certificate from "@/assets/services-icons/certificate.png";
@@ -16,8 +16,8 @@ const expertiseIcons: StaticImageData[] = [
   MicrosoftIcon,
   SapIcon,
   CeligoIcon,
-  ZohoIcon,
-  SalesforceIcon,
+  // ZohoIcon,
+  // SalesforceIcon,
 ];
 
 const Footer = () => {
@@ -236,4 +236,3 @@ export default Footer;
 
 
 
-// comment 
