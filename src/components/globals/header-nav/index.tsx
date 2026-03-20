@@ -10,19 +10,20 @@ import DownloadBrochureBtn from "./download-brochure-btn";
 
 const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 bg-[#002050]/95 backdrop-blur-md border-b border-[#1a2c4a]">
+    <header className="sticky top-0 z-50 bg-[#ffffff]/95 backdrop-blur-md border-b border-[#1a2c4a]">
 
       {/* Top accent line */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#fbc02d] to-transparent opacity-80" />
 
-      <div className="container flex items-center justify-between py-5">
+      {/* ✅ FIXED CONTAINER */}
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center flex-shrink-0">
           <motion.div
-            whileHover={{ scale: 1.06 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.25 }}
-            className="relative w-44 h-14"
+            className="relative w-40 h-12"
           >
             <Image
               src={NavLogo}
@@ -35,68 +36,60 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-12 text-[16px] font-semibold text-gray-200 tracking-wide">
+        <nav className="hidden md:flex items-center gap-4">
 
-          <Link
-            href="#services"
-            className="relative group hover:text-white transition"
-          >
-            Services
-            <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fbc02d] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
+          {[
+            { label: "Services", href: "#services" },
+            { label: "Solutions", href: "#solutions" },
+            { label: "Products", href: "#products" },
+            { label: "Contact", href: "mailto:mktg@atisunyainfotech.com" },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <Link
+                href={item.href}
+                className="px-5 py-2 rounded-full bg-[#2F7F78] text-white text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
+              >
+                {item.label}
+              </Link>
+            </motion.div>
+          ))}
 
-          <Link
-            href="#solutions"
-            className="relative group hover:text-white transition"
-          >
-            Solutions
-            <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fbc02d] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          <Link
-            href="#products"
-            className="relative group hover:text-white transition"
-          >
-            Products
-            <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fbc02d] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          <Link
-            href="mailto:mktg@atisunyainfotech.com"
-            className="relative group hover:text-white transition"
-          >
-            Contact
-            <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#fbc02d] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          {/* CTA Button */}
-          <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.96 }}>
+          {/* Book a Consultation */}
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
             <Link
               href="/contact-us"
-              className="px-7 py-2.5 rounded-full bg-[#2F7F78] text-white font-semibold shadow-lg hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
+              className="px-6 py-2 rounded-full bg-[#fbc02d] text-[#002050] text-sm font-semibold shadow-md hover:scale-105 transition-all duration-300"
             >
               Book a Consultation
             </Link>
           </motion.div>
 
           {/* Download Brochure */}
-          <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.96 }}>
+          <div className="ml-2">
             <DownloadBrochureBtn />
-          </motion.div>
+          </div>
 
         </nav>
 
         {/* Mobile */}
         <MobileNavbar>
-          <div className="rounded-b-xl bg-[#002050] py-5 container shadow-2xl">
+          <div className="rounded-b-xl bg-[#002050] py-5 px-6 shadow-2xl">
 
             <nav className="flex flex-col gap-4 text-gray-200 text-[16px]">
 
-              <MobileNavItem label="Services" href="#services" />
-              <MobileNavItem label="Solutions" href="#solutions" />
-              <MobileNavItem label="Products" href="#products" />
-              <MobileNavItem label="Contact" href="mailto:mktg@atisunyainfotech.com" />
-              <MobileNavItem label="Book a Consultation" href="/contact-us" />
+              {[
+                { label: "Services", href: "#services" },
+                { label: "Solutions", href: "#solutions" },
+                { label: "Products", href: "#products" },
+                { label: "Contact", href: "mailto:mktg@atisunyainfotech.com" },
+                { label: "Book a Consultation", href: "/contact-us" },
+              ].map((item, i) => (
+                <MobileNavItem key={i} label={item.label} href={item.href} />
+              ))}
 
               <div className="mt-4">
                 <DownloadBrochureBtn />

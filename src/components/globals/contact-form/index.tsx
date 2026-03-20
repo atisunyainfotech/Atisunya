@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import Link from "next/link";
+import { User, Phone, Mail, MessageSquare } from "lucide-react";
 
 const ContactForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -12,12 +12,8 @@ const ContactForm = () => {
 
     try {
       setLoading(true);
-      const formData = new FormData(e.target as HTMLFormElement);
 
-      const name = formData.get("name");
-      const email = formData.get("email");
-      const phoneNumber = formData.get("phoneNumber");
-      const message = formData.get("message");
+      const formData = new FormData(e.target as HTMLFormElement);
 
       const resp = await fetch("/api/contact-us", {
         method: "POST",
@@ -25,10 +21,10 @@ const ContactForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          email,
-          phoneNumber,
-          message,
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phoneNumber: formData.get("phoneNumber"),
+          message: formData.get("message"),
         }),
       });
 
@@ -36,77 +32,153 @@ const ContactForm = () => {
         setShowSuccess(true);
       }
     } catch (error) {
-      console.log("Error ", error);
+      console.log(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-xl mx-auto shadow-sm px-5 pb-10 pt-6 mt-8">
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {showSuccess && (
-          <h3 className="bg-green/20 p-3 rounded-md font-medium">
-            Thank you for reaching us. We will contact you shortly
-          </h3>
-        )}
+    <section className="py-24 bg-gray-100">
+      <div className="max-w-xl mx-auto px-6">
 
-        <div className="space-y-2">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Full Name" required />
+        {/* Contact Card */}
+        <div className="bg-white border-2 border-[#fbc02d] rounded-2xl p-10 shadow-xl">
+
+          {/* Heading */}
+          <div className="text-center mb-10">
+            <p className="text-[#2F7F78] uppercase tracking-widest text-sm font-semibold">
+              Contact Us
+            </p>
+
+            <h2 className="text-3xl font-bold text-[#002050] mt-2">
+              Let's Discuss Your Project
+            </h2>
+
+            <p className="text-gray-600 text-sm mt-3">
+              Share your business requirements and our experts will guide you with the best ERP solutions.
+            </p>
+
+            <div className="w-20 h-[3px] bg-[#fbc02d] mx-auto mt-5 rounded-full" />
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-7">
+
+            {showSuccess && (
+              <div className="bg-green-50 border border-green-200 text-green-700 p-3 rounded-md text-sm">
+                Thank you! Our team will contact you shortly.
+              </div>
+            )}
+
+            {/* Name */}
+            <div className="relative">
+              <User className="absolute left-3 top-4 text-[#2F7F78] w-5 h-5" />
+
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder=" "
+                className="peer w-full border border-gray-300 rounded-md pl-10 pt-5 pb-2 px-3
+                focus:border-[#fbc02d] focus:ring-1 focus:ring-[#fbc02d] outline-none transition"
+              />
+
+              <label className="absolute left-10 top-2 text-sm text-gray-500
+              peer-placeholder-shown:top-3.5
+              peer-placeholder-shown:text-base
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-2
+              peer-focus:text-sm
+              peer-focus:text-[#002050] transition-all">
+                Full Name
+              </label>
+            </div>
+
+            {/* Phone */}
+            <div className="relative">
+              <Phone className="absolute left-3 top-4 text-[#2F7F78] w-5 h-5" />
+
+              <input
+                type="tel"
+                name="phoneNumber"
+                required
+                placeholder=" "
+                className="peer w-full border border-gray-300 rounded-md pl-10 pt-5 pb-2 px-3
+                focus:border-[#fbc02d] focus:ring-1 focus:ring-[#fbc02d] outline-none transition"
+              />
+
+              <label className="absolute left-10 top-2 text-sm text-gray-500
+              peer-placeholder-shown:top-3.5
+              peer-placeholder-shown:text-base
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-2
+              peer-focus:text-sm
+              peer-focus:text-[#002050] transition-all">
+                Contact Number
+              </label>
+            </div>
+
+            {/* Email */}
+            <div className="relative">
+              <Mail className="absolute left-3 top-4 text-[#2F7F78] w-5 h-5" />
+
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder=" "
+                className="peer w-full border border-gray-300 rounded-md pl-10 pt-5 pb-2 px-3
+                focus:border-[#fbc02d] focus:ring-1 focus:ring-[#fbc02d] outline-none transition"
+              />
+
+              <label className="absolute left-10 top-2 text-sm text-gray-500
+              peer-placeholder-shown:top-3.5
+              peer-placeholder-shown:text-base
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-2
+              peer-focus:text-sm
+              peer-focus:text-[#002050] transition-all">
+                Business Email
+              </label>
+            </div>
+
+            {/* Message */}
+            <div className="relative">
+              <MessageSquare className="absolute left-3 top-4 text-[#2F7F78] w-5 h-5" />
+
+              <textarea
+                name="message"
+                required
+                placeholder=" "
+                className="peer w-full border border-gray-300 rounded-md pl-10 pt-5 pb-2 px-3 h-32
+                focus:border-[#fbc02d] focus:ring-1 focus:ring-[#fbc02d] outline-none transition"
+              />
+
+              <label className="absolute left-10 top-2 text-sm text-gray-500
+              peer-placeholder-shown:top-4
+              peer-placeholder-shown:text-base
+              peer-placeholder-shown:text-gray-400
+              peer-focus:top-2
+              peer-focus:text-sm
+              peer-focus:text-[#002050] transition-all">
+                Project Requirement
+              </label>
+            </div>
+
+            {/* Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 rounded-md font-semibold text-white
+              bg-[#002050] hover:bg-[#2F7F78] transition shadow-lg"
+            >
+              {loading ? "Submitting..." : "Submit Your Request"}
+            </button>
+
+          </form>
         </div>
-
-        <div className="space-y-2">
-          <label>Contact Number</label>
-          <input
-            type="text"
-            name="phoneNumber"
-            placeholder="Contact Number"
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="john@gmail.com" required />
-        </div>
-
-        <div className="space-y-2">
-          <label>Requirement</label>
-          <textarea
-            name="message"
-            placeholder="Your Requirement / message"
-            className="h-32"
-            required
-          />
-        </div>
-
-        {/* BUTTONS */}
-        <div className="flex items-center gap-4">
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            aria-disabled={loading}
-            className={`bg-green px-4 py-1.5 text-white rounded-sm cursor-pointer hover:opacity-80 transition ${
-              loading && "opacity-50 cursor-wait"
-            }`}
-          >
-            Submit
-          </button>
-
-          {/* AtiSunya App Button */}
-          {/* <Link
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green px-4 py-1.5 text-white rounded-sm cursor-pointer hover:opacity-80 transition"
-          >
-            AtiSunya App
-          </Link > */}
-        </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 };
 

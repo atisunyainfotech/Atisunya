@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import AIIcon from "@/assets/initiatives/ai.jpeg";
-import GoGreen from "@/assets/initiatives/go-green.jpeg";
-import NoDrugs from "@/assets/initiatives/no-drugs.jpeg";
+import AIIcon from "@/assets/initiatives/ai.png";
+import GoGreen from "@/assets/initiatives/go-green.png";
+import NoDrugs from "@/assets/initiatives/no-drugs.png";
 
 const initiatives = [
   {
