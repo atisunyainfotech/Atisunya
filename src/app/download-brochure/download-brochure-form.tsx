@@ -55,7 +55,7 @@ Requirements: ${formData.requirements}`;
 
     // ✅ WhatsApp
     window.open(
-      `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+      `https://wa.me/${#}?text=${# }`,
       "_blank"
     );
 
