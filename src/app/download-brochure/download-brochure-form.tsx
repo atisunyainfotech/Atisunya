@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sendEmail } from "../actions/sendEmail";
 
 export default function DownloadBrochureForm() {
   const [formData, setFormData] = useState({
@@ -29,6 +30,22 @@ export default function DownloadBrochureForm() {
     }, 3000);
   };
 
+
+  const sendMailToUser = async () => {
+    try {
+      await sendEmail(formData);
+      console.log("Email sent successfully");
+    } catch (error) {
+      console.error("Failed to send email:", error);
+    }
+
+    const link = document.createElement("a");
+    link.href = "/AtiSunyaInfotech-brochure.pdf";
+    link.download = "AtiSunyaInfotech-Brochure.pdf";
+    link.click();
+  };
+ 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -46,25 +63,25 @@ export default function DownloadBrochureForm() {
 
     const message = `Hello, Can I know About Services .
 
-Name: ${formData.name}
-Contact: ${formData.contact}
-Email: ${formData.email}
-Requirements: ${formData.requirements}`;
+    Name: ${formData.name}
+    Contact: ${formData.contact}
+    Email: ${formData.email}
+    Requirements: ${formData.requirements}`;
 
     const encodedMessage = encodeURIComponent(message);
 
     // ✅ WhatsApp
-    window.open(
-      `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
-      "_blank"
-    );
+    // window.open(
+    //   `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+    //   "_blank"
+    // );
 
     // ✅ Email (opens mail client)
-    const email = "mktg@atisunyainfotech.com";
-    const subject = encodeURIComponent("New Brochure Request");
-    const body = encodeURIComponent(message);
+    // const email = "mktg@atisunyainfotech.com";
+    // const subject = encodeURIComponent("New Brochure Request");
+    // const body = encodeURIComponent(message);
 
-    window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+    // window.open(`mailto:${email}?subject=${subject}&body=${body}`);
 
     // ✅ Download brochure
     const link = document.createElement("a");
@@ -72,6 +89,7 @@ Requirements: ${formData.requirements}`;
     link.download = "AtiSunyaInfotech-Brochure.pdf";
     link.click();
 
+    sendMailToUser();
     showPopup("success", "WhatsApp opened, Email ready & Brochure downloaded!");
   };
 
