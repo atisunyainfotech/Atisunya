@@ -96,7 +96,7 @@ export default function PremiumCorporateServices() {
         <div className="text-center mt-20">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
             <Link
-              href="#hero"
+               href="/contact-us"
               className="inline-block px-10 py-4 rounded-full
               bg-[#002050] text-white font-semibold
               relative overflow-hidden group"

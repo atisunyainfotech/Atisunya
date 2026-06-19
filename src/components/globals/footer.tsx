@@ -20,6 +20,14 @@ const expertiseIcons: StaticImageData[] = [
   // SalesforceIcon,
 ];
 
+const footerNavOptions = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+  // { name: "Solutions", path: "/solutions" },
+  { name: "Contact", path: "mailto:mktg@atisunyainfotech.com" },
+  { name: "About Us", path: "/about-us" },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-[#0B1120] text-white">
@@ -51,17 +59,17 @@ const Footer = () => {
             </h5>
 
             <ul className="space-y-3 text-sm text-gray-400">
-              {["Home", "Services", "Solutions", "Contact Us"].map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item === "Home" ? "/" : `#${item.toLowerCase().replace(" ", "")}`}
-                    className="hover:text-yellow-400 transition duration-300"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+    {footerNavOptions.map((item, i) => (
+      <li key={i}>
+        <Link
+          href={item.path}
+          className="hover:text-yellow-400 transition duration-300"
+        >
+          {item.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
           </div>
 
           {/* ERP Expertise */}
