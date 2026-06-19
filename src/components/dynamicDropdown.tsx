@@ -41,7 +41,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item }) => {
 
       {/* Child */}
       {open && item.children && (
-        <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-1 min-w-[180px] z-50">
+        <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-1 min-w-[220px] z-50">
           {item.children.map((child, index) => (
             <div
               key={index}

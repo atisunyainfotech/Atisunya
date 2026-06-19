@@ -12,7 +12,15 @@ import Dropdown from "@/components/dynamicDropdown";
 const Navbar = () => {
   const navData = [
     { label: "About Us", route: "/about-us" },
-    { label: "Services", route: "/services" },
+    {
+      label: "Services",
+      children: [
+        { label: "Oracle NetSuite", route: "/services/oracle-netsuite" },
+        { label: "Odoo", route: "/services/odoo" },
+        { label: "Microsoft Dynamics", route: "/services/microsoft-dynamics" },
+        { label: "Microsoft Services", route: "/services/microsoft-services" },
+      ],
+    },
     // { label: "Solutions", route: "#solutions" },
     {
       label: "Products",

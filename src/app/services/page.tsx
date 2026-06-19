@@ -25,22 +25,37 @@ const fadeUp = {
 
 const erpPlatforms = [
   {
+    id: "oracle-netsuite",
     title: "Oracle NetSuite",
     desc: "End-to-end implementation, deep customization, seamless integrations, and continuous support tailored to your business.",
   },
   {
+    id: "microsoft-dynamics",
     title: "Microsoft Dynamics 365",
     desc: "Advanced business process automation and enterprise management solutions for modern organizations.",
   },
   {
+    id: "odoo",
+    title: "Odoo",
+    desc: "Modular ERP implementation and customization for CRM, sales, inventory, accounting, and operations workflows.",
+  },
+  {
+    id: "microsoft-services",
+    title: "Microsoft Services",
+    desc: "Microsoft ecosystem consulting, implementation, automation, and support to improve collaboration and productivity.",
+  },
+  {
+    id: "salesforce",
     title: "Salesforce",
     desc: "CRM implementation and optimization focused on enhancing customer experience and engagement.",
   },
   {
+    id: "zoho",
     title: "Zoho",
     desc: "Flexible, cloud-based business applications to improve productivity and operational efficiency.",
   },
   {
+    id: "sap",
     title: "SAP",
     desc: "Enterprise-grade ERP solutions designed for large-scale operations with high performance and scalability.",
   },
@@ -183,6 +198,7 @@ const ServicesPage = () => {
           {erpPlatforms.map((item, i) => (
             <motion.div
               key={i}
+              id={item.id}
               custom={i}
               variants={fadeUp}
               initial="hidden"
