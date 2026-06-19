@@ -32,7 +32,7 @@ export default function ContactUsPage() {
   const cardRef3 = useRef<any>(null);
 
   return (
-    <section className="bg-gradient-to-br from-[#eef2f7] to-[#ffffff] py-20">
+    <section className="bg-gradient-to-br from-[#eef2f7] to-[#ffffff] py-10">
       <div className="container mx-auto px-6">
 
         {/* Heading */}

@@ -39,7 +39,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-24 bg-gray-100">
+    <section className="py-1 bg-gray-100">
       <div className="max-w-xl mx-auto px-6">
 
         {/* Contact Card */}

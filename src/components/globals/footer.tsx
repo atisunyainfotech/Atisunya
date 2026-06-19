@@ -3,12 +3,28 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+<<<<<<< HEAD
 // import oracleIcon from "@/assets/services-icons/Oracle.png";
 // import MicrosoftIcon from "@/assets/services-icons/Dynamic.png";
 // // import ZohoIcon from "@/assets/services-icons/Zoho.png";
 // // import SalesforceIcon from "@/assets/services-icons/Salesforce.png";
 // import SapIcon from "@/assets/services-icons/SAP.png";
 // import CeligoIcon from "@/assets/services-icons/Partner.png";
+=======
+import oracleIcon from "@/assets/services-icons/Oracle.png";
+import MicrosoftIcon from "@/assets/services-icons/Dynamic.png";
+// import ZohoIcon from "@/assets/services-icons/Zoho.png";
+// import SalesforceIcon from "@/assets/services-icons/Salesforce.png";
+import SapIcon from "@/assets/services-icons/SAP.png";
+import CeligoIcon from "@/assets/services-icons/Partner.png";
+
+// ✅ Import multiple certificates
+import certificate1 from "@/assets/services-icons/certificate1.png";
+import certificate2 from "@/assets/services-icons/certificate2.png";
+import certificate3 from "@/assets/services-icons/certificate3.png";
+import certificate4 from "@/assets/services-icons/certificate4.png";
+import certificate5 from "@/assets/services-icons/certificate5.png";
+>>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
 
 // ✅ Import multiple certificates
 import certificate1 from "@/assets/services-icons/certificate1.png";
@@ -27,6 +43,22 @@ import certificate5 from "@/assets/services-icons/certificate5.png";
 //   // ZohoIcon,
 //   // SalesforceIcon,
 // ];
+
+// ✅ Certificates array
+const certificates: StaticImageData[] = [
+  certificate1,
+  certificate2,
+  certificate3,
+  certificate4,
+  certificate5,
+];
+
+const footerNavOptions = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+  { name: "Contact", path: "mailto:mktg@atisunyainfotech.com" },
+  { name: "About Us", path: "/about-us" },
+];
 
 // ✅ Certificates array
 const certificates: StaticImageData[] = [
@@ -93,19 +125,21 @@ const Footer = () => {
               Expertise
             </h5>
 
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-4 gap-2  lg:grid-cols-2 w-fit gap-6">
               {expertiseIcons.map((icon, index) => (
                 <div key={index} className="group relative flex justify-start">
-
-                  <div className="absolute -inset-1 rounded-full 
+                  <div
+                    className="absolute -inset-1 rounded-full 
                   bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500
-                  opacity-0 blur-md group-hover:opacity-70 transition-all duration-500" />
+                  opacity-0 blur-md group-hover:opacity-70 transition-all duration-500"
+                  />
 
-                  <div className="relative w-16 h-16 rounded-full bg-white overflow-hidden
+                  <div
+                    className="relative w-10 h-10 lg:w-15 lg:h-15 rounded-full bg-white overflow-hidden
                   border border-gray-200 transition-all duration-300
                   group-hover:scale-110 group-hover:border-yellow-400
-                  group-hover:shadow-[0_0_25px_rgba(250,204,21,0.6)]">
-
+                  group-hover:shadow-[0_0_25px_rgba(250,204,21,0.6)]"
+                  >
                     <Image
                       src={icon}
                       alt="ERP Logo"
@@ -113,7 +147,6 @@ const Footer = () => {
                       sizes="64px"
                       className="object-cover"
                     />
-
                   </div>
                 </div>
               ))}
@@ -126,6 +159,7 @@ const Footer = () => {
     Contact
   </h5>
 
+<<<<<<< HEAD
   <div className="space-y-4 text-sm text-gray-400">
 
     <a
@@ -134,6 +168,15 @@ const Footer = () => {
     >
       📱 <b>+91 90210 23513</b>
     </a>
+=======
+            <div className="space-y-4 text-sm text-gray-400">
+              <a
+                href="tel:+919021023513"
+                className="block hover:text-yellow-400 transition font-medium"
+              >
+                📱 <b>+91 90210 23513</b>
+              </a>
+>>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
 
     <a
       href="tel:+917396453199"
@@ -156,6 +199,7 @@ const Footer = () => {
       📩 info@atisunya.co
     </a>
 
+<<<<<<< HEAD
   </div>
 </div>
 
@@ -215,6 +259,23 @@ const Footer = () => {
             Certifications
           </h5>
 
+=======
+              <p className="font-medium">
+                📍 101 Hampshire Drive <br />
+                Plainsboro Township, New Jersey 08536 <br />
+                United States
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ✅ Certificates Section */}
+        <div className="mt-10 mb-8">
+          <h5 className="text-xl uppercase tracking-[2px] mb-6 text-[#fbc02d]">
+            Certifications
+          </h5>
+
+>>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
           <div className="flex flex-wrap gap-6 items-center">
             {certificates.map((cert, index) => (
               <div key={index} className="group relative">
@@ -253,7 +314,6 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="grid md:grid-cols-2 items-center gap-6">
-
           <div className="text-xs text-gray-500 text-center md:text-left">
             <span className="text-white font-medium">
               © 2026 AtiSunya Infotech Pvt Ltd All Rights Reserved.
@@ -261,7 +321,6 @@ const Footer = () => {
           </div>
 
           <div className="flex justify-center md:justify-end gap-4">
-
             {[
               {
                 href: "https://www.linkedin.com/company/atisunya-infotech-private-limited/",
@@ -297,26 +356,11 @@ const Footer = () => {
                 />
               </a>
             ))}
-
           </div>
-
         </div>
-
       </div>
     </footer>
   );
 };
 
 export default Footer;
-
-
-
-
-
-
-
-
-
-
-
-
