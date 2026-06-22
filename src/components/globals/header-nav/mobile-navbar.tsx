@@ -54,7 +54,7 @@ export function MobileNavbar({ children }: { children: ReactNode }) {
             const item = target.closest("[data-label]") as HTMLElement;
 
             if (item) {
-              if (item.dataset.label === "Products") return;
+              if (item.dataset.label === "Products" || item.dataset.label === "Services") return;
             }
 
             e.stopPropagation();

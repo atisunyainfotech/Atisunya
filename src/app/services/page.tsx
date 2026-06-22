@@ -25,23 +25,16 @@ const fadeUp = {
 
 const erpPlatforms = [
   {
-<<<<<<< HEAD
     id: "oracle-netsuite",
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
     title: "Oracle NetSuite",
     desc: "End-to-end implementation, deep customization, seamless integrations, and continuous support tailored to your business.",
   },
   {
-<<<<<<< HEAD
     id: "microsoft-dynamics",
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
     title: "Microsoft Dynamics 365",
     desc: "Advanced business process automation and enterprise management solutions for modern organizations.",
   },
   {
-<<<<<<< HEAD
     id: "odoo",
     title: "Odoo",
     desc: "Modular ERP implementation and customization for CRM, sales, inventory, accounting, and operations workflows.",
@@ -53,24 +46,16 @@ const erpPlatforms = [
   },
   {
     id: "salesforce",
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
     title: "Salesforce",
     desc: "CRM implementation and optimization focused on enhancing customer experience and engagement.",
   },
   {
-<<<<<<< HEAD
     id: "zoho",
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
     title: "Zoho",
     desc: "Flexible, cloud-based business applications to improve productivity and operational efficiency.",
   },
   {
-<<<<<<< HEAD
     id: "sap",
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
     title: "SAP",
     desc: "Enterprise-grade ERP solutions designed for large-scale operations with high performance and scalability.",
   },
@@ -213,10 +198,7 @@ const ServicesPage = () => {
           {erpPlatforms.map((item, i) => (
             <motion.div
               key={i}
-<<<<<<< HEAD
               id={item.id}
-=======
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
               custom={i}
               variants={fadeUp}
               initial="hidden"
@@ -302,8 +284,4 @@ const ServicesPage = () => {
   );
 };
 
-<<<<<<< HEAD
 export default ServicesPage;
-=======
-export default ServicesPage;
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90

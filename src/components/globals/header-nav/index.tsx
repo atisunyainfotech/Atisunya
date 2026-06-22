@@ -9,49 +9,55 @@ import { MobileNavItem } from "./mobile-nav-item";
 import DownloadBrochureBtn from "./download-brochure-btn";
 import Dropdown from "@/components/dynamicDropdown";
 
-const Navbar = () => {
-  const navData = [
-    { label: "About Us", route: "/about-us" },
-<<<<<<< HEAD
-    {
-      label: "Services",
-      children: [
-        { label: "Oracle NetSuite", route: "/services/oracle-netsuite" },
-        { label: "Odoo", route: "/services/odoo" },
-        { label: "Microsoft Dynamics", route: "/services/microsoft-dynamics" },
-        { label: "Microsoft Services", route: "/services/microsoft-services" },
-      ],
-    },
-    // { label: "Solutions", route: "#solutions" },
-=======
-    { label: "Services", route: "/services" },
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
-    {
-      label: "Products",
-      children: [
-        { label: "HRMS - One", route: "/hr-One" },
-        { label: "ERP - One", route: "/erp-One" },
-      ],
-    },
-    { label: "Contact", route: "mailto:mktg@atisunyainfotech.com" },
-  ];
-<<<<<<< HEAD
-=======
+const navData = [
+  { label: "About Us", route: "/about-us" },
+  {
+    label: "Services",
+    children: [
+      { label: "Oracle NetSuite", route: "/services/oracle-netsuite" },
+      { label: "Odoo", route: "/services/odoo" },
+      { label: "Microsoft Dynamics", route: "/services/microsoft-dynamics" },
+      { label: "Microsoft Services", route: "/services/microsoft-services" },
+    ],
+  },
+  {
+    label: "Products",
+    children: [
+      { label: "HRMS - One", route: "/hr-One" },
+      { label: "ERP - One", route: "/erp-One" },
+    ],
+  },
+  { label: "Contact", route: "mailto:mktg@atisunyainfotech.com" },
+];
 
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
+const mobileNavData = [
+  { label: "About Us", href: "/about-us" },
+  {
+    label: "Services",
+    items: [
+      { label: "Oracle NetSuite", href: "/services/oracle-netsuite" },
+      { label: "Odoo", href: "/services/odoo" },
+      { label: "Microsoft Dynamics", href: "/services/microsoft-dynamics" },
+      { label: "Microsoft Services", href: "/services/microsoft-services" },
+    ],
+  },
+  {
+    label: "Products",
+    items: [
+      { label: "HRMS - One", href: "/hr-One" },
+      { label: "ERP - One", href: "/erp-One" },
+    ],
+  },
+  { label: "Contact", href: "mailto:mktg@atisunyainfotech.com" },
+  { label: "Book a Consultation", href: "/contact-us" },
+];
+
+const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#ffffff]/95 backdrop-blur-md border-b border-[#1a2c4a]">
-      {/* Top accent line */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#fbc02d] to-transparent opacity-80" />
 
-<<<<<<< HEAD
-      {/* ✅ FIXED CONTAINER */}
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
-=======
-      {/* Main container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3 sm:py-4">
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
-        {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -68,43 +74,6 @@ const Navbar = () => {
           </motion.div>
         </Link>
 
-<<<<<<< HEAD
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-4">
-          {/* {[
-            { label: "Services", href: "#services" },
-            { label: "Solutions", href: "#solutions" },
-            { label: "Products", href: "#products" },
-            { label: "Contact", href: "mailto:mktg@atisunyainfotech.com" },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <Link
-                href={item.href}
-                className="px-5 py-2 rounded-full bg-[#2F7F78] text-white text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
-              >
-                {item.label}
-              </Link>
-            </motion.div>
-          ))} */}
-
-          {navData.map((item, i) =>
-            item.children ? (
-              <Dropdown key={i} item={item} />
-            ) : (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <Link
-                  href={item.route}
-                  className="px-5 py-2 rounded-full bg-[#2F7F78] text-white text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
-=======
-        {/* Desktop Nav — hidden below md */}
         <nav className="hidden md:flex items-center gap-3 lg:gap-4 flex-wrap justify-end">
           {navData.map((item, i) =>
             item.children ? (
@@ -118,7 +87,6 @@ const Navbar = () => {
                 <Link
                   href={item.route}
                   className="px-4 lg:px-5 py-2 rounded-full bg-[#2F7F78] text-white text-xs lg:text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
                 >
                   {item.label}
                 </Link>
@@ -126,7 +94,6 @@ const Navbar = () => {
             ),
           )}
 
-          {/* Book a Consultation */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
             <Link
               href="/contact-us"
@@ -136,62 +103,22 @@ const Navbar = () => {
             </Link>
           </motion.div>
 
-          {/* Download Brochure */}
-<<<<<<< HEAD
-          <div className="ml-2 scale-90">
-=======
           <div className="ml-1 scale-90">
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
             <DownloadBrochureBtn />
           </div>
         </nav>
 
-<<<<<<< HEAD
-        {/* Mobile */}
-        <MobileNavbar>
-          <div className="rounded-b-xl bg-[#002050] py-5 px-6 shadow-2xl">
-            <nav className="flex flex-col gap-4 text-gray-200 text-[16px]">
-              {[
-                { label: "About Us", href: "/about-us" },
-
-                { label: "Services", href: "/services" },
-                // { label: "Solutions", href: "#solutions" },
-                { label: "Products", href: "#products" },
-                { label: "Contact", href: "mailto:mktg@atisunyainfotech.com" },
-                { label: "Book a Consultation", href: "/contact-us" },
-              ].map((item, i) => (
-                <MobileNavItem key={i} label={item.label} href={item.href} />
-              ))}
-
-              <div className="mt-4">
-                <DownloadBrochureBtn />
-              </div>
-            </nav>
-          </div>
-        </MobileNavbar>
-=======
-        {/* Mobile hamburger — visible below md */}
         <div className="flex md:hidden items-center">
           <MobileNavbar>
             <div className="rounded-b-xl bg-[#002050] py-5 px-5 shadow-2xl">
               <nav className="flex flex-col gap-3 text-gray-200 text-[15px]">
-                {[
-                  { label: "About Us", href: "/about-us" },
-                  { label: "Services", href: "/services" },
-                  {
-                    label: "Products",
-                    children: [
-                      { label: "HRMS - One", href: "/hr-One" },
-                      { label: "ERP - One", href: "/erp-One" },
-                    ],
-                  },
-                  {
-                    label: "Contact",
-                    href: "mailto:mktg@atisunyainfotech.com",
-                  },
-                  { label: "Book a Consultation", href: "/contact-us" },
-                ].map((item, i) => (
-                  <MobileNavItem key={i} label={item.label} href={item.href  } children={item.children}  />
+                {mobileNavData.map((item, i) => (
+                  <MobileNavItem
+                    key={i}
+                    label={item.label}
+                    href={item.href}
+                    items={item.items}
+                  />
                 ))}
 
                 <div className="mt-4 flex justify-center">
@@ -201,10 +128,8 @@ const Navbar = () => {
             </div>
           </MobileNavbar>
         </div>
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
       </div>
 
-      {/* Bottom subtle glow */}
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#2F7F78] to-transparent opacity-50" />
     </header>
   );

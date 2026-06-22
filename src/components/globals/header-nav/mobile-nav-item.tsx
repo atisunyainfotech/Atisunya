@@ -6,7 +6,7 @@ import { useState } from "react";
 interface MobileNavItemProps {
   label: string;
   href?: string;
-  children?: MobileNavItemProps[];
+  items?: MobileNavItemProps[];
   className?: string;
 }
 
@@ -14,11 +14,11 @@ export function MobileNavItem({
   label,
   href,
   className,
-  children,
+  items,
 }: MobileNavItemProps) {
   const [open, setOpen] = useState(false);
 
-  const hasChildren = children && children.length > 0;
+  const hasChildren = items && items.length > 0;
 
   return (
     <>
@@ -44,11 +44,12 @@ export function MobileNavItem({
           {/* Children */}
           {open && (
             <div className="ml-4 mt-2 flex flex-col gap-2">
-              {children.map((child, index) => (
+              {items.map((child, index) => (
                 <MobileNavItem
                   key={index}
                   label={child.label}
                   href={child.href}
+                  items={child.items}
                 />
               ))}
             </div>

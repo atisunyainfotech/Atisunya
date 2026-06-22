@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-<<<<<<< HEAD
-// import { sendEmail } from "../actions/sendEmail";
-=======
 import { sendEmail } from "../actions/sendEmail";
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
 
 export default function DownloadBrochureForm() {
   const [formData, setFormData] = useState({

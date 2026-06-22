@@ -466,11 +466,7 @@ export default function HRPage() {
       {/* ── FEATURES SECTION ── */}
       <div className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto">
-<<<<<<< HEAD
           <motion.div
-=======
-          <motion.div 
->>>>>>> 1aa83048c7d58166a20e7dd5b33bd7281a620f90
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-14"

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-import Netsuite from "@/assets/dashboards/netsuite-dashboard.avif";
+import Netsuite from "@/assets/dashboards/netsuite-dashboard.png";
 import Dynamics from "@/assets/dashboards/dynamics-dashboard.png";
 import Salesforce from "@/assets/dashboards/salesforce-dashboard.webp";
 import SAP from "@/assets/dashboards/sap-dashboard.png";
