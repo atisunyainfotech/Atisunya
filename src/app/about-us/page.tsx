@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+
 // 👉 Replace with your actual images
 import Director1 from "@/assets/about-us/Jay.png";
 import Director2 from "@/assets/about-us/Atul.jpg";
@@ -267,4 +268,3 @@ const AboutPage = () => {
 export default AboutPage;
 
 
-//Comment Added
