@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import ERPIcon from "@/assets/products/erp.svg";
 import TimestampIcon from "@/assets/products/timestamp.svg";
@@ -10,18 +11,21 @@ const products = [
   {
     title: "ERP One",
     image: ERPIcon,
+    href: "/erp-One",
     description:
       "Enterprise resource planning platform engineered for automation, operational control, and scalable digital transformation.",
   },
   {
     title: "Time Stamp",
     image: TimestampIcon,
+    href: "/time-stamp",
     description:
       "Advanced workforce intelligence system delivering precise attendance tracking and operational transparency.",
   },
   {
     title: "Copilot / Chatbot",
     image: ChatbotIcon,
+    href: "/copilot-chatbot",
     description:
       "AI-powered conversational assistant built to enhance engagement, support automation, and streamline communication.",
   },
@@ -34,10 +38,6 @@ export default function LuxuryEnterpriseProducts() {
 
         {/* Centered Header */}
         <div className="text-center max-w-4xl mx-auto mb-24">
-          <p className="text-sm font-semibold text-[#2F7F78] tracking-widest uppercase mb-4">
-            Our Products
-          </p>
-
           <h2 className="text-4xl md:text-5xl font-bold text-[#002050] leading-tight">
             Enterprise-Driven Solutions <br />
             Designed for Performance & Growth
@@ -87,7 +87,10 @@ export default function LuxuryEnterpriseProducts() {
 
                 {/* Premium Button */}
                 <div className="mt-10">
-                  <button className="relative w-full py-3 rounded-full bg-[#fbc02d] text-[#002050] font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(251,192,45,0.5)]">
+                  <Link
+                    href={item.href}
+                    className="relative block w-full py-3 text-center rounded-full bg-[#fbc02d] text-[#002050] font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(251,192,45,0.5)]"
+                  >
                     
                     {/* Shine Effect */}
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700"></span>
@@ -96,7 +99,7 @@ export default function LuxuryEnterpriseProducts() {
                       Discover Solution
                     </span>
 
-                  </button>
+                  </Link>
                 </div>
 
               </div>

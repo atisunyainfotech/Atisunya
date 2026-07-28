@@ -26,15 +26,15 @@ const About = () => {
         <div>
           <div className="space-y-6 text-sm text-gray-600">
             <p className="font-bold">
-             AtiSunya Infotech is a trusted digital transformation partner delivering enterprise-grade ERP and technology solutions across Oracle NetSuite, Zoho, Salesforce, Microsoft Dynamics 365, SAP, and the complete Microsoft ecosystem. We help organizations optimize operations, enhance visibility, automate processes, and scale with confidence through intelligent, secure, and future-ready solutions.
+             AtiSunya Infotech helps ambitious teams choose, implement, and improve ERP platforms across Oracle NetSuite, Odoo, Zoho, Salesforce, Microsoft Dynamics 365, SAP, and the Microsoft cloud ecosystem.
             </p>
 
             <p className="font-bold">
-              At AtiSunya Infotech, we deliver tailored Oracle NetSuite and Microsoft-based solutions designed to optimize business processes and enhance productivity. Backed by deep expertise, our certified teams provide end-to-end services that enable scalable growth, operational efficiency, and continuous innovation.
+              Our work starts with discovery: understanding finance, sales, inventory, HR, reporting, integrations, and data quality before a single configuration decision is made.
             </p>
 
             <p className="font-bold">
-              We help companies buy, implement, and maximize ROI from NetSuite and its integrated solutions, while also leveraging our expertise in Microsoft Services.
+              From NetSuite implementation to Microsoft automation and managed ERP support, we focus on practical rollouts, cleaner workflows, and ROI that can be measured after go-live.
             </p>
 
             <h4 className="text-xl">

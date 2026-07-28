@@ -59,17 +59,6 @@ export default function DownloadBrochureForm() {
       return;
     }
 
-    const phoneNumber = "919021023513";
-
-    const message = `Hello, Can I know About Services .
-
-    Name: ${formData.name}
-    Contact: ${formData.contact}
-    Email: ${formData.email}
-    Requirements: ${formData.requirements}`;
-
-    const encodedMessage = encodeURIComponent(message);
-
     // ✅ WhatsApp
     // window.open(
     //   `https://wa.me/${phoneNumber}?text=${encodedMessage}`,

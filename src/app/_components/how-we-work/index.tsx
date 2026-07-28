@@ -1,13 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { MouseEvent, useState } from "react";
 import Cards from "./cards";
+
+type Particle = {
+  id: number;
+  size: number;
+  left: number;
+  duration: number;
+  delay: number;
+  color: string;
+};
+
+const particles: Particle[] = [
+  { id: 1, size: 5, left: 8, duration: 18, delay: 0.4, color: "#2F7F78" },
+  { id: 2, size: 9, left: 18, duration: 24, delay: 1.6, color: "#fbc02d" },
+  { id: 3, size: 7, left: 29, duration: 20, delay: 3.1, color: "#2F7F78" },
+  { id: 4, size: 10, left: 41, duration: 27, delay: 0.9, color: "#fbc02d" },
+  { id: 5, size: 6, left: 52, duration: 22, delay: 2.4, color: "#2F7F78" },
+  { id: 6, size: 8, left: 64, duration: 25, delay: 4.2, color: "#fbc02d" },
+  { id: 7, size: 5, left: 73, duration: 19, delay: 1.1, color: "#2F7F78" },
+  { id: 8, size: 9, left: 82, duration: 28, delay: 3.6, color: "#fbc02d" },
+  { id: 9, size: 6, left: 91, duration: 21, delay: 2.0, color: "#2F7F78" },
+  { id: 10, size: 8, left: 97, duration: 26, delay: 4.8, color: "#fbc02d" },
+];
 
 const HowWeWork = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: any) => {
+  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setPosition({
       x: e.clientX - rect.left,
@@ -96,20 +118,6 @@ export default HowWeWork;
 /* Floating Particles */
 
 function PremiumParticles() {
-  const [particles, setParticles] = useState<any[]>([]);
-
-  useEffect(() => {
-    const generated = Array.from({ length: 10 }).map(() => ({
-      id: Math.random(),
-      size: Math.random() * 6 + 4,
-      left: Math.random() * 100,
-      duration: Math.random() * 18 + 12,
-      delay: Math.random() * 5,
-      color: Math.random() > 0.5 ? "#2F7F78" : "#fbc02d",
-    }));
-    setParticles(generated);
-  }, []);
-
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {particles.map((p) => (

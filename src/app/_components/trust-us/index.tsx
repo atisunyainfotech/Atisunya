@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 /* ================= TYPES ================= */
 
@@ -112,9 +113,12 @@ function SliderColumn({ tools }: SliderColumnProps) {
                 transition
               "
               >
-                <img
+                <Image
                   src={tool.logo}
                   alt={tool.name}
+                  width={28}
+                  height={28}
+                  unoptimized
                   className="w-7 h-7 object-contain"
                 />
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { MouseEvent, RefObject, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,8 +10,13 @@ import ContactForm from "@/components/globals/contact-form";
 
 export default function ContactUsPage() {
 
-  const handleMouseMove = (e: any, ref: any) => {
+  const handleMouseMove = (
+    e: MouseEvent<HTMLDivElement>,
+    ref: RefObject<HTMLDivElement | null>
+  ) => {
     const card = ref.current;
+    if (!card) return;
+
     const rect = card.getBoundingClientRect();
 
     const x = e.clientX - rect.left;
@@ -23,13 +28,15 @@ export default function ContactUsPage() {
     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
   };
 
-  const handleMouseLeave = (ref: any) => {
+  const handleMouseLeave = (ref: RefObject<HTMLDivElement | null>) => {
+    if (!ref.current) return;
+
     ref.current.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
   };
 
-  const cardRef1 = useRef<any>(null);
-  const cardRef2 = useRef<any>(null);
-  const cardRef3 = useRef<any>(null);
+  const cardRef1 = useRef<HTMLDivElement>(null);
+  const cardRef2 = useRef<HTMLDivElement>(null);
+  const cardRef3 = useRef<HTMLDivElement>(null);
 
   return (
     <section className="bg-gradient-to-br from-[#eef2f7] to-[#ffffff] py-10">

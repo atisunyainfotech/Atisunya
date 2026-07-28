@@ -1,67 +1,78 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface Module {
   title: string;
   description: string;
   image: string;
+  slug: string;
 }
 
 const modules: Module[] = [
   {
     title: "Customer Relationship Management (CRM)",
     description:
-      "Manage customer interactions, sales pipelines, and marketing campaigns in one centralized platform.",
+      "Bring leads, accounts, follow-ups, quotations, and service conversations into one sales command center.",
     image: "/images/crm.jpg",
+    slug: "customer-relationship-management",
   },
   {
     title: "Financial Management Solutions",
     description:
-      "Automate financial processes, manage accounting operations, and gain real-time financial insights.",
+      "Control accounting, approvals, cash flow, tax records, and management reporting with sharper finance visibility.",
     image: "/images/finance.jpg",
+    slug: "financial-management-solutions",
   },
   {
     title: "Ecommerce & Retail Management",
     description:
-      "Seamlessly manage online stores, inventory, and customer experiences across multiple channels.",
+      "Connect web stores, marketplace orders, counter sales, stock updates, payments, and returns in one retail flow.",
     image: "/images/ecommerce.jpg",
+    slug: "ecommerce-retail-management",
   },
   {
     title: "Inventory & Order Management",
     description:
-      "Track inventory levels, manage orders, and streamline fulfillment processes efficiently.",
+      "Improve warehouse accuracy, reorder planning, stock transfers, pick-pack-ship routines, and fulfillment tracking.",
     image: "/images/inventory.jpg",
+    slug: "inventory-order-management",
   },
   {
     title: "Supply Chain Management",
     description:
-      "Optimize supply chain operations with real-time visibility and advanced planning tools.",
+      "Coordinate suppliers, purchase requests, lead times, demand planning, landed cost, and delivery exceptions.",
     image: "/images/supplychain.jpg",
+    slug: "supply-chain-management",
   },
   {
     title: "Data & Analytics Management",
     description:
-      "Transform business data into actionable insights with advanced analytics and reporting tools.",
+      "Turn ERP data into KPI dashboards, drill-down reports, exception alerts, and leadership-ready scorecards.",
     image: "/images/analytics.jpg",
+    slug: "data-analytics-management",
   },
   {
     title: "Human Capital Management",
     description:
-      "Streamline HR processes including payroll, employee engagement, and workforce management.",
+      "Organize employee records, attendance, leave, payroll inputs, performance actions, and HR self-service.",
     image: "/images/hcm.jpg",
+    slug: "human-capital-management",
   },
   {
     title: "Professional Services Automation",
     description:
-      "Improve project management, resource allocation, and service delivery efficiency.",
+      "Plan resources, timesheets, expenses, milestones, project margins, and billing readiness for service teams.",
     image: "/images/services.jpg",
+    slug: "professional-services-automation",
   },
   {
     title: "Industry-Specific NetSuite Solutions",
     description:
-      "Customized ERP solutions tailored for specific industries to improve operational efficiency.",
+      "Shape NetSuite around trading, distribution, services, manufacturing, and industry-specific compliance needs.",
     image: "/images/industry.jpg",
+    slug: "industry-specific-netsuite-solutions",
   },
 ];
 
@@ -90,8 +101,9 @@ export default function ModulesSection() {
           <div className="w-24 h-1 bg-[#fbc02d] mx-auto mt-6 rounded"></div>
 
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-            NetSuite offers an integrated suite of cloud applications designed
-            to streamline operations and accelerate business growth.
+            Explore ERP modules built for the work that happens every day:
+            finance, CRM, inventory, ecommerce, HR, analytics, supply chain,
+            and project delivery.
           </p>
 
         </div>
@@ -131,9 +143,12 @@ export default function ModulesSection() {
                   {module.description}
                 </p>
 
-                <button className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#002050] text-white hover:bg-[#2F7F78] transition">
+                <Link
+                  href={`/modules/${module.slug}`}
+                  className="inline-flex px-4 py-2 text-sm font-semibold rounded-lg bg-[#002050] text-white hover:bg-[#2F7F78] transition"
+                >
                   Learn More
-                </button>
+                </Link>
 
               </div>
 

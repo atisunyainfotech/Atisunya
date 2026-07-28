@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -17,32 +16,32 @@ const services: Service[] = [
   {
     title: "Implementation",
     description:
-      "From discovery to go-live, we deliver tailored ERP implementations ensuring seamless deployment and scalable business growth.",
+      "Plan, configure, test, and launch ERP systems with clear ownership, clean data, and steady user adoption.",
   },
   {
     title: "Customization",
     description:
-      "We design ERP configurations aligned precisely with your workflows, processes, and operational objectives.",
+      "Adapt forms, roles, approvals, reports, and automations around the way your teams actually operate.",
   },
   {
     title: "Consulting",
     description:
-      "Strategic ERP consulting services helping businesses optimize performance and drive digital transformation.",
+      "Get practical ERP consulting for platform selection, process redesign, integration planning, and ROI clarity.",
   },
   {
     title: "Integration",
     description:
-      "End-to-end ERP integration with CRM, HRM and finance systems for unified operational intelligence.",
+      "Connect ERP with CRM, HRMS, finance, ecommerce, banking, logistics, and analytics without duplicate entry.",
   },
   {
     title: "Migration & Data Services",
     description:
-      "Secure and zero-downtime ERP migration ensuring accurate structured data transition.",
+      "Move master data, balances, transactions, documents, and history with validation before and after go-live.",
   },
   {
     title: "Support & Training",
     description:
-      "Ongoing ERP support and structured training ensuring maximum system efficiency.",
+      "Keep users confident through issue resolution, admin guidance, release support, and role-based training.",
   },
 ];
 

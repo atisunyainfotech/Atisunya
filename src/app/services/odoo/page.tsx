@@ -13,10 +13,8 @@ import ServiceDetailPage from "../_components/service-detail-page";
 export default function OdooPage() {
   return (
     <ServiceDetailPage
-      eyebrow="Odoo ERP Services"
       title="Odoo"
       highlight="ERP"
-      description="Flexible Odoo implementation and customization for CRM, sales, accounting, inventory, manufacturing, projects, websites, and integrated business operations."
       theme="odoo"
       stats={[
         { value: "Apps", label: "Modular ERP" },

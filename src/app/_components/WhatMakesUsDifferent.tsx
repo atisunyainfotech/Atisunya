@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Feature {
   title: string;
@@ -11,17 +12,17 @@ interface Feature {
 const features: Feature[] = [
   {
     title: "50+ Industry-Certified ERP Experts",
-    description: "Delivering expertise and trusted enterprise solutions.",
+    description: "Certified consultants for ERP discovery, rollout, integration, and post-go-live improvement.",
     icon: "https://img.icons8.com/color/96/conference-call.png",
   },
   {
     title: "Dedicated In-House Implementation Team",
-    description: "No freelancers. No outsourcing. Pure internal expertise.",
+    description: "Project managers, functional experts, and developers working from one accountable team.",
     icon: "https://img.icons8.com/color/96/teamwork.png",
   },
   {
     title: "Secure Enterprise Hosting & Deployment",
-    description: "Optimized deployment with compliance built-in.",
+    description: "Cloud environments planned for access control, performance, backups, and audit needs.",
     icon: "https://img.icons8.com/color/96/cloud.png",
   },
   {
@@ -31,27 +32,27 @@ const features: Feature[] = [
   },
   {
     title: "Tailor-Made ERP System Configurations",
-    description: "No generic systems. Built specifically for your business.",
+    description: "Workflows, roles, reports, and approvals shaped around your operating model.",
     icon: "https://img.icons8.com/color/96/settings.png",
   },
   {
     title: "International ERP Experience with Local Expertise",
-    description: "Seamless digital transformation across borders.",
+    description: "Global rollout experience with practical knowledge of India, UAE, and US operating needs.",
     icon: "https://img.icons8.com/color/96/worldwide-location.png",
   },
   {
     title: "Live Business Dashboards & Smart Analytics",
-    description: "Empowering data-driven decision-making.",
+    description: "KPI dashboards that make finance, sales, stock, and service performance easier to read.",
     icon: "https://img.icons8.com/color/96/combo-chart.png",
   },
   {
     title: "Your Dedicated ERP Success Partner",
-    description: "Ensuring smooth, strategic and effective ERP success.",
+    description: "Clear ownership from blueprint to adoption, support, and continuous improvement.",
     icon: "https://img.icons8.com/color/96/businessman.png",
   },
   {
     title: "ERP Support & System Monitoring",
-    description: "Continuous support to ensure smooth ERP operations.",
+    description: "Issue resolution, release checks, admin help, and enhancement planning after launch.",
     icon: "https://img.icons8.com/color/96/customer-support.png",
   },
 ];
@@ -73,9 +74,9 @@ export default function WhyAtiSunya() {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold text-[#002050] leading-tight">
-            ERP Solutions Built to
+            ERP Delivery Built to
             <span className="block text-[#2F7F78]">
-              Empower Your Business
+              Simplify Real Operations
             </span>
           </h2>
 
@@ -109,11 +110,12 @@ export default function WhyAtiSunya() {
                   className="flex justify-center mb-6"
                 >
                   <div className="p-4 rounded-full bg-[#fbc02d]/20 group-hover:bg-[#fbc02d]/30 transition">
-                    <img
+                    <Image
                       src={feature.icon}
                       alt={feature.title}
                       width={60}
                       height={60}
+                      unoptimized
                     />
                   </div>
                 </motion.div>

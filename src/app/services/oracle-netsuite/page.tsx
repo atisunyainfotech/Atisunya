@@ -13,10 +13,9 @@ import ServiceDetailPage from "../_components/service-detail-page";
 export default function OracleNetSuitePage() {
   return (
     <ServiceDetailPage
-       eyebrow="Oracle NetSuite Services"
+      theme="oracle"
       title="Oracle"
       highlight="NetSuite"
-      description="End-to-end Oracle NetSuite consulting, implementation, customization, integration, data migration, reporting, and managed support for growing businesses."
       stats={[
         { value: "360°", label: "ERP Coverage" },
         { value: "24/7", label: "Support" },

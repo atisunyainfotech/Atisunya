@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 import AIIcon from "@/assets/initiatives/ai.png";
@@ -10,27 +11,30 @@ import NoDrugs from "@/assets/initiatives/no-drugs.png";
 const initiatives = [
   {
     title: "Artificial Intelligence Advancement",
+    slug: "ai-advancement",
     image: AIIcon,
     description:
-      "AtiSunya Infotech supports government-led AI transformation through secure, scalable, and data-driven enterprise platforms designed for long-term impact.",
+      "Secure AI adoption roadmaps, automation pilots, and analytics platforms that help public teams move from scattered data to faster decisions.",
   },
   {
     title: "Go Green & Sustainability",
+    slug: "go-green-sustainability",
     image: GoGreen,
     description:
-      "We contribute to national sustainability missions by enabling energy-efficient digital infrastructure and responsible technology ecosystems.",
+      "Cloud optimization, paperless workflows, and impact dashboards that reduce waste while keeping growth, compliance, and reporting on track.",
   },
   {
     title: "Drug-Free Awareness Programs",
+    slug: "drug-free-awareness",
     image: NoDrugs,
     description:
-      "Our digital solutions enhance public awareness initiatives with structured outreach, intelligent automation, and citizen engagement systems.",
+      "Digital outreach systems for campaigns, events, case tracking, and citizen engagement, built with privacy, clarity, and measurable reach.",
   },
 ];
 
 export default function GovernmentInitiatives() {
   return (
-    <section className="bg-[#f8fafc] py-28">
+    <section id="initiatives" className="bg-[#f8fafc] py-28">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ===== Header ===== */}
@@ -53,8 +57,9 @@ export default function GovernmentInitiatives() {
           <div className="w-16 h-1 bg-[#FBC02D] mx-auto mt-6 rounded-full"></div>
 
           <p className="mt-8 text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
-            We align enterprise-grade technology solutions with public sector
-            missions, delivering secure, scalable, and measurable digital transformation.
+            We pair enterprise technology with public-impact programs, turning
+            national priorities into practical platforms, cleaner reporting, and
+            services people can actually use.
           </p>
         </motion.div>
 
@@ -104,11 +109,14 @@ export default function GovernmentInitiatives() {
 
               {/* Button */}
               <div className="mt-auto pt-8">
-                <button className="px-8 py-3 rounded-full bg-[#FBC02D] text-[#002050] font-semibold
+                <Link
+                  href={`/initiatives/${item.slug}`}
+                  className="inline-flex px-8 py-3 rounded-full bg-[#FBC02D] text-[#002050] font-semibold
                   transition-all duration-300
-                  hover:bg-white hover:scale-105 hover:shadow-lg">
+                  hover:bg-white hover:scale-105 hover:shadow-lg"
+                >
                   Learn More
-                </button>
+                </Link>
               </div>
 
             </motion.div>

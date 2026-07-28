@@ -7,6 +7,7 @@ import MicrosoftDynamic365Logo from "@/assets/brand-logos/Microsoft Dynamic 365.
 import Salesforce from "@/assets/brand-logos/Salesforce.svg";
 import SAP from "@/assets/brand-logos/SAP.svg";
 import Zoho from "@/assets/brand-logos/Zoho.svg";
+import Odoo from "@/assets/brand-logos/odoo_learning_partner_rgb.png";
 import AutoScroll from "embla-carousel-auto-scroll";
 import LeftGradient from "@/assets/left-gradient.png";
 import RightGradient from "@/assets/right-gradient.png";
@@ -55,6 +56,12 @@ const Carousel = () => {
           <div className="embla__slide w-44">
             <figure>
               <Image src={Zoho} alt="Zoho" width={130} />
+            </figure>
+          </div>
+
+          <div className="embla__slide w-44">
+            <figure>
+              <Image src={Odoo} alt="Odoo" width={130} />
             </figure>
           </div>
 
@@ -112,6 +119,12 @@ const Carousel = () => {
           <div className="embla__slide w-44">
             <figure>
               <Image src={Zoho} alt="Zoho" width={130} />
+            </figure>
+          </div>
+
+           <div className="embla__slide w-44">
+            <figure>
+              <Image src={Odoo} alt="Odoo" width={130} />
             </figure>
           </div>
 

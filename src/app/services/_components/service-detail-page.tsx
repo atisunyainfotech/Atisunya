@@ -11,7 +11,6 @@ import {
   GitBranch,
   LifeBuoy,
   LucideIcon,
-  Rocket,
   Settings,
   ShieldCheck,
   Workflow,
@@ -24,15 +23,13 @@ type Feature = {
 };
 
 type ServiceDetailPageProps = {
-  eyebrow: string;
   title: string;
   highlight: string;
-  description: string;
   stats: { value: string; label: string }[];
   services: Feature[];
   benefits: string[];
   modules: string[];
-  theme?: "default" | "odoo";
+  theme?: "default" | "odoo" | "oracle";
   appShowcase?: {
     eyebrow: string;
     title: string;
@@ -239,10 +236,8 @@ function AppShowcaseSymbol({
 }
 
 export default function ServiceDetailPage({
-  eyebrow,
   title,
   highlight,
-  description,
   stats,
   services,
   benefits,
@@ -251,22 +246,32 @@ export default function ServiceDetailPage({
   appShowcase,
 }: ServiceDetailPageProps) {
   const isOdooTheme = theme === "odoo";
-  const pageBg = isOdooTheme ? "bg-white text-[#2f2630]" : "bg-[#030712] text-white";
+  const isOracleTheme = theme === "oracle";
+  const pageBg = isOdooTheme
+    ? "bg-white text-[#2f2630]"
+    : isOracleTheme
+      ? "bg-[#F7F7F6] text-black"
+      : "bg-[#030712] text-white";
   const heroBg = isOdooTheme
     ? "bg-[linear-gradient(135deg,#ffffff_0%,#f7f7f8_42%,#eee9ed_100%)]"
-    : "";
-  const eyebrowClass = isOdooTheme
-    ? "inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#714B67]/15 bg-white/90 text-[#714B67] text-sm font-semibold mb-8 shadow-[0_10px_28px_rgba(47,38,48,0.07)]"
-    : "inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#fbc02d]/30 bg-[#fbc02d]/10 text-[#fbc02d] text-sm mb-8 backdrop-blur-xl";
+    : isOracleTheme
+      ? "bg-[linear-gradient(135deg,#ffffff_0%,#E9E9E9_50%,#94BFCE_100%)]"
+      : "";
   const highlightClass = isOdooTheme
     ? "block text-[#714B67]"
-    : "block bg-gradient-to-r from-[#fbc02d] via-white to-[#2F7F78] bg-clip-text text-transparent";
+    : isOracleTheme
+      ? "block text-[#EC4F3A]"
+      : "block bg-gradient-to-r from-[#fbc02d] via-white to-[#2F7F78] bg-clip-text text-transparent";
   const primaryButtonClass = isOdooTheme
     ? "px-8 py-4 rounded-full bg-[#714B67] text-white font-semibold shadow-[0_18px_38px_rgba(113,75,103,0.24)] hover:bg-[#5f3f57] hover:-translate-y-1 transition-all duration-300"
-    : "px-8 py-4 rounded-full bg-[#fbc02d] text-[#002050] font-semibold shadow-[0_0_40px_rgba(251,192,45,0.35)] hover:scale-105 transition-all duration-300";
+    : isOracleTheme
+      ? "px-8 py-4 rounded-[8px] bg-[#EC4F3A] text-white font-bold shadow-[0_18px_38px_rgba(236,79,58,0.22)] hover:bg-[#1A2F3F] hover:-translate-y-1 transition-all duration-300"
+      : "px-8 py-4 rounded-full bg-[#fbc02d] text-[#002050] font-semibold shadow-[0_0_40px_rgba(251,192,45,0.35)] hover:scale-105 transition-all duration-300";
   const secondaryButtonClass = isOdooTheme
     ? "group flex items-center gap-2 px-8 py-4 rounded-full border border-[#714B67]/20 bg-white/90 text-[#714B67] font-semibold shadow-[0_12px_30px_rgba(47,38,48,0.07)] hover:bg-white hover:-translate-y-1 transition-all duration-300"
-    : "group flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-all";
+    : isOracleTheme
+      ? "group flex items-center gap-2 px-8 py-4 rounded-[8px] border border-[#1A2F3F]/15 bg-white/90 text-[#1A2F3F] font-bold shadow-[0_12px_30px_rgba(26,47,63,0.08)] hover:border-[#EC4F3A]/40 hover:-translate-y-1 transition-all duration-300"
+      : "group flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-all";
 
   return (
     <div className={`${pageBg} overflow-hidden`}>
@@ -275,6 +280,12 @@ export default function ServiceDetailPage({
           <>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,#714B6714,transparent_30%),radial-gradient(circle_at_82%_12%,#d8d3d714,transparent_28%)]" />
             <div className="absolute inset-x-0 bottom-0 h-px bg-[#714B67]/10" />
+          </>
+        ) : isOracleTheme ? (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(236,79,58,0.12),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(148,191,206,0.32),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.72),rgba(233,233,233,0.34))]" />
+            <div className="absolute left-0 top-0 h-1.5 w-full bg-[#EC4F3A]" />
+            <div className="absolute bottom-0 left-0 h-24 w-full bg-[linear-gradient(0deg,#F7F7F6,rgba(247,247,246,0))]" />
           </>
         ) : (
           <>
@@ -286,21 +297,12 @@ export default function ServiceDetailPage({
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-28 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div {...fadeUp}>
-            <div className={eyebrowClass}>
-              <Rocket size={16} />
-              {eyebrow}
-            </div>
-
             <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
               {title}
               <span className={highlightClass}>
                 {highlight}
               </span>
             </h1>
-
-            <p className={`mt-8 text-lg leading-8 max-w-2xl ${isOdooTheme ? "text-[#5f5b61]" : "text-gray-300"}`}>
-              {description}
-            </p>
 
             <div className="mt-10 flex flex-wrap gap-5">
               <Link
@@ -324,19 +326,36 @@ export default function ServiceDetailPage({
 
             <div className="grid grid-cols-3 gap-5 mt-14">
               {stats.map((item) => (
-                <div
+                <motion.div
                   key={item.label}
+                  whileHover={
+                    isOracleTheme
+                      ? {
+                          y: -8,
+                          boxShadow: "0 24px 55px rgba(26,47,63,0.16)",
+                        }
+                      : isOdooTheme
+                        ? {
+                            y: -8,
+                            scale: 1.02,
+                            boxShadow: "0 24px 55px rgba(113,75,103,0.15)",
+                          }
+                        : { y: -4 }
+                  }
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   className={
                     isOdooTheme
-                      ? "bg-white/90 border border-[#714B67]/10 rounded-2xl p-5 shadow-[0_16px_38px_rgba(47,38,48,0.08)] backdrop-blur-xl"
+                      ? "bg-white/90 border border-[#714B67]/10 rounded-2xl p-5 shadow-[0_16px_38px_rgba(47,38,48,0.08)] backdrop-blur-xl transition-colors duration-300 hover:border-[#714B67]/35"
+                      : isOracleTheme
+                        ? "group bg-white/95 border border-[#1A2F3F]/10 rounded-[8px] p-5 shadow-[0_16px_38px_rgba(26,47,63,0.10)] transition-colors duration-300 hover:border-[#EC4F3A]/35"
                       : "bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-xl"
                   }
                 >
-                  <h3 className={`text-3xl font-bold ${isOdooTheme ? "text-[#714B67]" : "text-[#fbc02d]"}`}>
+                  <h3 className={`text-3xl font-bold ${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#fbc02d]"}`}>
                     {item.value}
                   </h3>
-                  <p className={`text-sm mt-1 ${isOdooTheme ? "text-[#77727a]" : "text-gray-400"}`}>{item.label}</p>
-                </div>
+                  <p className={`text-sm mt-1 ${isOdooTheme ? "text-[#77727a]" : isOracleTheme ? "text-[#36677D]" : "text-gray-400"}`}>{item.label}</p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -349,7 +368,15 @@ export default function ServiceDetailPage({
             className="relative flex justify-center"
           >
             {isOdooTheme ? (
-              <div className="relative w-[560px] max-w-full aspect-[1.04] rounded-[34px] border border-[#714B67]/10 bg-white/80 p-6 shadow-[0_38px_100px_rgba(47,38,48,0.14)] backdrop-blur-3xl">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{
+                  y: -12,
+                  boxShadow: "0 44px 110px rgba(113,75,103,0.22)",
+                }}
+                className="relative w-[560px] max-w-full aspect-[1.04] rounded-[34px] border border-[#714B67]/10 bg-white/80 p-6 shadow-[0_38px_100px_rgba(47,38,48,0.14)] backdrop-blur-3xl"
+              >
                 <div className="absolute inset-0 rounded-[34px] bg-[linear-gradient(90deg,rgba(113,75,103,0.055)_1px,transparent_1px),linear-gradient(0deg,rgba(113,75,103,0.045)_1px,transparent_1px)] bg-[size:54px_54px]" />
                 <div className="absolute -inset-8 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(113,75,103,0.16),transparent_58%)]" />
 
@@ -410,8 +437,15 @@ export default function ServiceDetailPage({
                       ["360", "Data"],
                       ["Role", "Access"],
                     ].map(([value, label]) => (
-                      <div
+                      <motion.div
                         key={label}
+                        whileHover={{
+                          y: -6,
+                          scale: 1.03,
+                          borderColor: "rgba(113,75,103,0.34)",
+                          boxShadow: "0 18px 38px rgba(47,38,48,0.14)",
+                        }}
+                        transition={{ duration: 0.24, ease: "easeOut" }}
                         className="rounded-2xl border border-[#714B67]/10 bg-white/90 px-4 py-3 text-center shadow-[0_14px_30px_rgba(47,38,48,0.08)]"
                       >
                         <p className="text-base font-black text-[#714B67]">
@@ -420,11 +454,128 @@ export default function ServiceDetailPage({
                         <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#908890]">
                           {label}
                         </p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
+            ) : isOracleTheme ? (
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{
+                  y: -12,
+                  boxShadow: "0 44px 110px rgba(26,47,63,0.24)",
+                }}
+                className="relative w-[560px] max-w-full rounded-[10px] border border-[#1A2F3F]/12 bg-white p-5 shadow-[0_34px_90px_rgba(26,47,63,0.18)]"
+              >
+                <div className="rounded-[8px] border border-[#1A2F3F]/10 bg-[#F7F7F6]">
+                  <div className="flex items-center justify-between border-b border-[#1A2F3F]/10 bg-[#1A2F3F] px-5 py-4 text-white">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#EC4F3A]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#E2C06B]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#94BFCE]" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-[0.18em]">
+                      NetSuite Command Center
+                    </span>
+                  </div>
+
+                  <div className="grid gap-4 p-5">
+                    <div className="grid grid-cols-3 gap-3">
+                      {["Invoices", "POs", "Inventory"].map((label, index) => (
+                        <motion.div
+                          key={label}
+                          whileHover={{
+                            y: -6,
+                            backgroundColor: "#FFFFFF",
+                            borderColor: "rgba(236,79,58,0.42)",
+                          }}
+                          transition={{ duration: 0.24, ease: "easeOut" }}
+                          className="rounded-[8px] border border-[#1A2F3F]/10 bg-[#E9E9E9] p-4 shadow-sm"
+                        >
+                          <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#36677D]">
+                            {label}
+                          </p>
+                          <p className={`mt-3 text-2xl font-black ${index === 0 ? "text-[#EC4F3A]" : "text-[#1A2F3F]"}`}>
+                            {index === 0 ? "98%" : index === 1 ? "42" : "360"}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.div
+                      whileHover={{
+                        y: -6,
+                        boxShadow: "0 22px 45px rgba(26,47,63,0.13)",
+                      }}
+                      transition={{ duration: 0.24, ease: "easeOut" }}
+                      className="rounded-[8px] border border-[#1A2F3F]/10 bg-white p-5"
+                    >
+                      <div className="mb-5 flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-black text-[#1A2F3F]">
+                            Financial Operations
+                          </p>
+                          <p className="mt-1 text-xs font-semibold text-[#36677D]">
+                            Revenue, procurement and reporting visibility
+                          </p>
+                        </div>
+                        <Cloud className="text-[#EC4F3A]" size={34} />
+                      </div>
+                      <div className="space-y-3">
+                        {[
+                          ["Month-end close", "w-[86%]", "#EC4F3A"],
+                          ["Saved searches", "w-[72%]", "#36677D"],
+                          ["Data controls", "w-[64%]", "#E2C06B"],
+                        ].map(([label, width, color]) => (
+                          <div key={label}>
+                            <div className="mb-1 flex justify-between text-xs font-bold text-[#264759]">
+                              <span>{label}</span>
+                              <span>Live</span>
+                            </div>
+                            <div className="h-2 rounded-full bg-[#E9E9E9]">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                whileInView={{ width: width.replace("w-[", "").replace("]", "") }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.85, delay: 0.15 }}
+                                className="h-full rounded-full"
+                                style={{ backgroundColor: color }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {services.slice(0, 3).map((service) => {
+                        const Icon = service.icon;
+
+                        return (
+                          <motion.div
+                            key={service.title}
+                            whileHover={{
+                              y: -6,
+                              scale: 1.03,
+                              borderColor: "rgba(236,79,58,0.42)",
+                              boxShadow: "0 20px 42px rgba(26,47,63,0.14)",
+                            }}
+                            transition={{ duration: 0.24, ease: "easeOut" }}
+                            className="rounded-[8px] border border-[#1A2F3F]/10 bg-white p-4 shadow-[0_12px_24px_rgba(26,47,63,0.07)]"
+                          >
+                            <Icon className="mb-3 text-[#EC4F3A]" size={24} />
+                            <p className="text-sm font-black text-[#1A2F3F]">
+                              {service.title}
+                            </p>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             ) : (
               <div className="relative w-[520px] max-w-full aspect-square rounded-full border border-[#fbc02d]/20 bg-gradient-to-br from-[#2F7F78]/15 to-[#002050]/30 backdrop-blur-3xl flex items-center justify-center">
                 <div className="w-40 h-40 rounded-full bg-gradient-to-r from-[#2F7F78] to-[#002050] flex items-center justify-center shadow-[0_0_80px_rgba(47,127,120,0.45)]">
@@ -460,16 +611,16 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      <section className={`py-28 px-6 ${isOdooTheme ? "bg-white text-[#2f2630]" : "bg-white text-slate-900"}`}>
+      <section className={`py-28 px-6 ${isOdooTheme ? "bg-white text-[#2f2630]" : isOracleTheme ? "bg-[#F7F7F6] text-black" : "bg-white text-slate-900"}`}>
         <div className="max-w-6xl mx-auto text-center">
           <motion.div {...fadeUp}>
-            <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
+            <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
               Service Capabilities
             </p>
-            <h2 className={`${isOdooTheme ? "text-4xl md:text-5xl font-black" : "text-4xl md:text-5xl font-bold"} leading-tight`}>
+            <h2 className={`${isOdooTheme || isOracleTheme ? "text-4xl md:text-5xl font-black" : "text-4xl md:text-5xl font-bold"} leading-tight`}>
               Consulting, Implementation, Integration and Support
             </h2>
-            <p className={`mt-8 text-lg leading-8 max-w-5xl mx-auto ${isOdooTheme ? "text-[#646069]" : "text-slate-600"}`}>
+            <p className={`mt-8 text-lg leading-8 max-w-5xl mx-auto ${isOdooTheme ? "text-[#646069]" : isOracleTheme ? "text-[#264759]" : "text-slate-600"}`}>
               We design every engagement around your processes, users, data,
               and reporting needs so the platform becomes a practical operating
               system for the business.
@@ -479,13 +630,13 @@ export default function ServiceDetailPage({
       </section>
 
       {appShowcase ? (
-        <section className={`py-24 px-6 text-[#2f2630] ${isOdooTheme ? "bg-[#f6f6f7]" : "bg-[#f1f2f4]"}`}>
+        <section className={`py-24 px-6 text-[#2f2630] ${isOdooTheme ? "bg-[#f6f6f7]" : isOracleTheme ? "bg-[#E9E9E9]" : "bg-[#f1f2f4]"}`}>
           <div className={`${isOdooTheme ? "max-w-[900px]" : "max-w-[920px]"} mx-auto`}>
             <motion.div {...fadeUp} className="text-center">
-              <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
+              <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
                 {appShowcase.eyebrow}
               </p>
-              <h2 className={`${isOdooTheme ? "text-3xl md:text-4xl font-black" : "text-4xl md:text-5xl font-bold"} leading-tight`}>
+              <h2 className={`${isOdooTheme || isOracleTheme ? "text-3xl md:text-4xl font-black" : "text-4xl md:text-5xl font-bold"} leading-tight`}>
                 {appShowcase.title}
               </h2>
               <p className={`mt-5 ${isOdooTheme ? "text-base" : "text-lg"} text-[#646069] leading-8 max-w-4xl mx-auto`}>
@@ -503,12 +654,17 @@ export default function ServiceDetailPage({
                     ease: "easeOut" as const,
                     delay: index * 0.025,
                   }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.035,
+                    transition: { duration: 0.22, ease: "easeOut" },
+                  }}
                   className={`${isOdooTheme ? "min-h-[108px]" : "min-h-[122px]"} group flex flex-col items-center text-center`}
                 >
                   <div
                     className={
                       isOdooTheme
-                        ? "relative h-[68px] w-[68px] overflow-hidden rounded-lg bg-white shadow-[0_10px_24px_rgba(47,38,48,0.10)] ring-1 ring-[#714B67]/10 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_18px_36px_rgba(113,75,103,0.16)]"
+                        ? "relative h-[68px] w-[68px] overflow-hidden rounded-lg border border-[#714B67]/10 bg-white shadow-[0_10px_24px_rgba(47,38,48,0.10)] ring-1 ring-[#714B67]/10 transition-all duration-300 group-hover:border-[#714B67]/35 group-hover:shadow-[0_20px_42px_rgba(113,75,103,0.18)]"
                         : "relative h-20 w-20 overflow-hidden rounded-md bg-white shadow-[0_12px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_45px_rgba(47,127,120,0.18)]"
                     }
                   >
@@ -529,10 +685,10 @@ export default function ServiceDetailPage({
         </section>
       ) : null}
 
-      <section className={`py-28 px-6 ${isOdooTheme ? "bg-white text-[#2f2630]" : "bg-[#030712]"}`}>
+      <section className={`py-28 px-6 ${isOdooTheme ? "bg-white text-[#2f2630]" : isOracleTheme ? "bg-[#1A2F3F] text-white" : "bg-[#030712]"}`}>
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeUp} className="text-center">
-            <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#fbc02d]"} uppercase tracking-[0.25em] text-xs mb-3`}>
+            <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#E2C06B]" : "text-[#fbc02d]"} uppercase tracking-[0.25em] text-xs mb-3`}>
               What We Deliver
             </p>
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -548,10 +704,27 @@ export default function ServiceDetailPage({
                 <motion.div
                   key={service.title}
                   {...fadeUp}
-                  whileHover={{ y: -8 }}
+                  whileHover={
+                    isOracleTheme
+                      ? {
+                          y: -10,
+                          scale: 1.015,
+                          boxShadow: "0 26px 62px rgba(0,0,0,0.20)",
+                        }
+                      : isOdooTheme
+                        ? {
+                            y: -10,
+                            scale: 1.015,
+                            boxShadow: "0 26px 62px rgba(47,38,48,0.14)",
+                          }
+                        : { y: -8 }
+                  }
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   className={
                     isOdooTheme
                       ? "group bg-white border border-[#714B67]/10 rounded-2xl p-8 shadow-[0_14px_34px_rgba(47,38,48,0.06)] hover:border-[#714B67]/25 hover:shadow-[0_24px_58px_rgba(47,38,48,0.12)] transition-all duration-300"
+                      : isOracleTheme
+                        ? "group bg-white text-black border border-white/10 rounded-[8px] p-8 shadow-[0_16px_34px_rgba(0,0,0,0.14)] hover:border-[#EC4F3A]/50 hover:-translate-y-1 transition-all duration-300"
                       : "group bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:border-[#fbc02d]/40 hover:bg-[#2F7F78]/10 transition-all duration-300"
                   }
                 >
@@ -559,13 +732,15 @@ export default function ServiceDetailPage({
                     className={
                       isOdooTheme
                         ? "w-14 h-14 rounded-2xl bg-[#714B67] text-white flex items-center justify-center shadow-[0_16px_34px_rgba(113,75,103,0.22)] mb-6 ring-4 ring-[#714B67]/10"
+                        : isOracleTheme
+                          ? "w-14 h-14 rounded-[8px] bg-[#EC4F3A] text-white flex items-center justify-center shadow-[0_16px_34px_rgba(236,79,58,0.20)] mb-6"
                         : "w-16 h-16 rounded-2xl bg-gradient-to-r from-[#2F7F78] to-[#002050] flex items-center justify-center shadow-lg mb-6"
                     }
                   >
                     <Icon size={30} />
                   </div>
                   <h3 className="text-2xl font-semibold">{service.title}</h3>
-                  <p className={`${isOdooTheme ? "text-[#646069]" : "text-gray-400"} mt-4 leading-7`}>
+                  <p className={`${isOdooTheme ? "text-[#646069]" : isOracleTheme ? "text-[#264759]" : "text-gray-400"} mt-4 leading-7`}>
                     {service.desc}
                   </p>
                 </motion.div>
@@ -575,10 +750,10 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      <section className={`py-28 px-6 ${isOdooTheme ? "bg-[#f6f6f7] text-[#2f2630]" : "bg-slate-50 text-slate-900"}`}>
+      <section className={`py-28 px-6 ${isOdooTheme ? "bg-[#f6f6f7] text-[#2f2630]" : isOracleTheme ? "bg-[#E9E9E9] text-black" : "bg-slate-50 text-slate-900"}`}>
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeUp} className="text-center">
-            <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
+            <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs mb-3`}>
               Business Outcomes
             </p>
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -591,16 +766,34 @@ export default function ServiceDetailPage({
               <motion.div
                 key={benefit}
                 {...fadeUp}
+                whileHover={
+                  isOracleTheme
+                    ? {
+                        y: -7,
+                        scale: 1.01,
+                        boxShadow: "0 26px 58px rgba(26,47,63,0.15)",
+                      }
+                    : isOdooTheme
+                      ? {
+                          y: -7,
+                          scale: 1.01,
+                          boxShadow: "0 26px 58px rgba(47,38,48,0.13)",
+                        }
+                      : undefined
+                }
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 className={
                   isOdooTheme
                     ? "flex items-start gap-4 bg-white rounded-2xl p-7 shadow-[0_14px_34px_rgba(47,38,48,0.06)] border border-[#714B67]/10 hover:shadow-[0_22px_52px_rgba(47,38,48,0.11)] hover:-translate-y-1 transition-all duration-300"
+                    : isOracleTheme
+                      ? "flex items-start gap-4 bg-white rounded-[8px] p-7 shadow-[0_14px_34px_rgba(26,47,63,0.08)] border border-[#1A2F3F]/10 hover:shadow-[0_22px_52px_rgba(26,47,63,0.13)] hover:-translate-y-1 transition-all duration-300"
                     : "flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-all"
                 }
               >
-                <CheckCircle className={`${isOdooTheme ? "text-[#714B67]" : "text-[#2F7F78]"} mt-1`} size={24} />
+                <CheckCircle className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#2F7F78]"} mt-1`} size={24} />
                 <div>
                   <h3 className="font-semibold text-lg">{benefit}</h3>
-                  <p className={`${isOdooTheme ? "text-[#646069]" : "text-slate-600"} mt-2`}>
+                  <p className={`${isOdooTheme ? "text-[#646069]" : isOracleTheme ? "text-[#264759]" : "text-slate-600"} mt-2`}>
                     Practical delivery focused on adoption, clean data,
                     reliable workflows, and measurable improvement.
                   </p>
@@ -611,11 +804,16 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      <section className={`relative py-32 px-6 overflow-hidden ${isOdooTheme ? "bg-white" : "bg-white"}`}>
+      <section className={`relative py-32 px-6 overflow-hidden ${isOdooTheme || isOracleTheme ? "bg-white" : "bg-white"}`}>
         {isOdooTheme ? (
           <>
             <div className="absolute inset-x-0 top-0 h-px bg-[#714B67]/10" />
             <div className="absolute inset-x-0 bottom-0 h-px bg-[#714B67]/10" />
+          </>
+        ) : isOracleTheme ? (
+          <>
+            <div className="absolute inset-x-0 top-0 h-px bg-[#1A2F3F]/10" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-[#1A2F3F]/10" />
           </>
         ) : (
           <>
@@ -633,6 +831,8 @@ export default function ServiceDetailPage({
             className={
               isOdooTheme
                 ? "rounded-[30px] bg-[#714B67] p-8 shadow-[0_28px_80px_rgba(113,75,103,0.26)]"
+                : isOracleTheme
+                  ? "rounded-[10px] bg-[#1A2F3F] p-8 shadow-[0_28px_80px_rgba(26,47,63,0.24)]"
                 : "rounded-[32px] bg-gradient-to-br from-[#002050] to-[#2F7F78] p-8 shadow-[0_25px_80px_rgba(0,32,80,0.2)]"
             }
           >
@@ -641,19 +841,31 @@ export default function ServiceDetailPage({
                 const Icon = defaultIcons[index % defaultIcons.length];
 
                 return (
-                  <div
+                  <motion.div
                     key={module}
+                    whileHover={
+                      isOracleTheme
+                        ? {
+                            y: -6,
+                            backgroundColor: "rgba(255,255,255,0.18)",
+                            borderColor: "rgba(226,192,107,0.42)",
+                          }
+                        : { y: -3 }
+                    }
+                    transition={{ duration: 0.24, ease: "easeOut" }}
                     className={
                       isOdooTheme
                         ? "rounded-2xl border border-white/15 bg-white/10 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                        : isOracleTheme
+                          ? "rounded-[8px] border border-white/15 bg-white/10 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                         : "rounded-2xl border border-white/10 bg-white/10 p-5"
                     }
                   >
-                    <Icon className={`${isOdooTheme ? "text-white" : "text-[#fbc02d]"} mb-4`} size={28} />
+                    <Icon className={`${isOdooTheme ? "text-white" : isOracleTheme ? "text-[#E2C06B]" : "text-[#fbc02d]"} mb-4`} size={28} />
                     <p className="text-sm font-semibold text-white">
                       {module}
                     </p>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -665,7 +877,7 @@ export default function ServiceDetailPage({
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs font-semibold mb-4`}>
+            <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#EC4F3A]" : "text-[#2F7F78]"} uppercase tracking-[0.25em] text-xs font-semibold mb-4`}>
               Delivery Approach
             </p>
             <h2 className="text-5xl md:text-6xl font-black leading-tight text-slate-900">
@@ -674,13 +886,15 @@ export default function ServiceDetailPage({
                 className={
                   isOdooTheme
                     ? "block text-[#714B67]"
+                    : isOracleTheme
+                      ? "block text-[#EC4F3A]"
                     : "block bg-gradient-to-r from-[#2F7F78] to-[#002050] bg-clip-text text-transparent"
                 }
               >
                 Continuous Support
               </span>
             </h2>
-            <p className={`mt-8 text-lg leading-8 ${isOdooTheme ? "text-[#646069]" : "text-slate-600"}`}>
+            <p className={`mt-8 text-lg leading-8 ${isOdooTheme ? "text-[#646069]" : isOracleTheme ? "text-[#264759]" : "text-slate-600"}`}>
               Our team handles requirement mapping, configuration,
               integrations, migration, testing, user training, and post-go-live
               support with a clear implementation rhythm.
@@ -693,11 +907,22 @@ export default function ServiceDetailPage({
                 "Migration, UAT, training and go-live",
                 "Managed support and continuous optimization",
               ].map((item) => (
-                <div
+                <motion.div
                   key={item}
+                  whileHover={
+                    isOracleTheme
+                      ? {
+                          x: 8,
+                          boxShadow: "0 20px 48px rgba(26,47,63,0.12)",
+                        }
+                      : undefined
+                  }
+                  transition={{ duration: 0.24, ease: "easeOut" }}
                   className={
                   isOdooTheme
                       ? "group flex items-start gap-5 rounded-2xl border border-[#714B67]/10 bg-white p-5 shadow-[0_12px_30px_rgba(47,38,48,0.06)] hover:shadow-[0_20px_48px_rgba(47,38,48,0.11)] hover:-translate-y-1 transition-all duration-300"
+                      : isOracleTheme
+                        ? "group flex items-start gap-5 rounded-[8px] border border-[#1A2F3F]/10 bg-white p-5 shadow-[0_12px_30px_rgba(26,47,63,0.07)] hover:shadow-[0_20px_48px_rgba(26,47,63,0.12)] hover:-translate-y-1 transition-all duration-300"
                       : "group flex items-start gap-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   }
                 >
@@ -705,6 +930,8 @@ export default function ServiceDetailPage({
                     className={
                       isOdooTheme
                         ? "min-w-[52px] h-[52px] rounded-2xl bg-[#714B67] flex items-center justify-center shadow-[0_12px_28px_rgba(113,75,103,0.20)]"
+                        : isOracleTheme
+                          ? "min-w-[52px] h-[52px] rounded-[8px] bg-[#EC4F3A] flex items-center justify-center shadow-[0_12px_28px_rgba(236,79,58,0.20)]"
                         : "min-w-[52px] h-[52px] rounded-2xl bg-gradient-to-r from-[#2F7F78] to-[#002050] flex items-center justify-center shadow-lg"
                     }
                   >
@@ -714,27 +941,27 @@ export default function ServiceDetailPage({
                     <h3 className="text-lg font-semibold text-slate-900">
                       {item}
                     </h3>
-                    <p className={`${isOdooTheme ? "text-[#77727a]" : "text-slate-500"} mt-1`}>
+                    <p className={`${isOdooTheme ? "text-[#77727a]" : isOracleTheme ? "text-[#36677D]" : "text-slate-500"} mt-1`}>
                       Structured execution with transparent milestones and
                       business-ready documentation.
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className={`py-28 px-6 text-center ${isOdooTheme ? "bg-[linear-gradient(180deg,#f6f6f7_0%,#ffffff_100%)] text-[#2f2630]" : "bg-[#030712]"}`}>
+      <section className={`py-28 px-6 text-center ${isOdooTheme ? "bg-[linear-gradient(180deg,#f6f6f7_0%,#ffffff_100%)] text-[#2f2630]" : isOracleTheme ? "bg-[#1A2F3F] text-white" : "bg-[#030712]"}`}>
         <motion.div {...fadeUp} className="max-w-4xl mx-auto">
-          <p className={`${isOdooTheme ? "text-[#714B67]" : "text-[#fbc02d]"} uppercase tracking-[0.25em] text-xs mb-3`}>
+          <p className={`${isOdooTheme ? "text-[#714B67]" : isOracleTheme ? "text-[#E2C06B]" : "text-[#fbc02d]"} uppercase tracking-[0.25em] text-xs mb-3`}>
             Schedule A Free Consultation
           </p>
           <h2 className="text-4xl md:text-6xl font-black leading-tight">
             Ready to Modernize with {title}?
           </h2>
-          <p className={`mt-6 text-lg leading-8 ${isOdooTheme ? "text-[#646069]" : "text-gray-400"}`}>
+          <p className={`mt-6 text-lg leading-8 ${isOdooTheme ? "text-[#646069]" : isOracleTheme ? "text-[#E9E9E9]" : "text-gray-400"}`}>
             Talk to AtiSunya Infotech about your current systems, target
             workflows, and the fastest practical route to implementation.
           </p>
@@ -744,6 +971,8 @@ export default function ServiceDetailPage({
               className={
                 isOdooTheme
                   ? "inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#714B67] text-white font-semibold shadow-[0_18px_38px_rgba(113,75,103,0.22)] hover:bg-[#5f3f57] hover:-translate-y-1 transition-all duration-300"
+                  : isOracleTheme
+                    ? "inline-flex items-center gap-3 px-10 py-5 rounded-[8px] bg-[#EC4F3A] text-white font-bold shadow-[0_18px_38px_rgba(236,79,58,0.22)] hover:bg-white hover:text-[#1A2F3F] hover:-translate-y-1 transition-all duration-300"
                   : "inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#fbc02d] text-[#002050] font-semibold shadow-[0_0_40px_rgba(251,192,45,0.35)] hover:scale-105 transition-all duration-300"
               }
             >

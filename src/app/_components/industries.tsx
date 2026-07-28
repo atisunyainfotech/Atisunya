@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface Industry {
   name: string;
@@ -52,7 +53,8 @@ export default function IndustryExpertise() {
           </h2>
 
           <p className="text-gray-600 mt-6 text-lg">
-            We deliver tailored ERP implementations designed for industry-specific operational excellence.
+            We configure ERP workflows for the way each sector buys, sells,
+            produces, stocks, serves, reports, and complies.
           </p>
 
           <div className="w-24 h-1 bg-gradient-to-r from-[#fbc02d] to-[#2F7F78] mx-auto mt-8 rounded-full"></div>
@@ -82,9 +84,12 @@ export default function IndustryExpertise() {
                 bg-gradient-to-br from-[#2F7F78]/20 to-[#fbc02d]/30
                 group-hover:scale-110 transition-transform duration-300 mb-4"
               >
-                <img
+                <Image
                   src={industry.icon}
                   alt={industry.name}
+                  width={36}
+                  height={36}
+                  unoptimized
                   className="w-9 h-9 object-contain"
                 />
               </div>

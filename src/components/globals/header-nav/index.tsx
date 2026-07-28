@@ -8,12 +8,14 @@ import { MobileNavbar } from "./mobile-navbar";
 import { MobileNavItem } from "./mobile-nav-item";
 import DownloadBrochureBtn from "./download-brochure-btn";
 import Dropdown from "@/components/dynamicDropdown";
+import { OdooNavLink } from "./odoo-nav-link";
 
 const navData = [
   { label: "About Us", route: "/about-us" },
   {
     label: "Services",
     children: [
+      { label: "Discovery Solution", route: "/discovery-solution" },
       { label: "Oracle NetSuite", route: "/services/oracle-netsuite" },
       { label: "Odoo", route: "/services/odoo" },
       { label: "Microsoft Dynamics", route: "/services/microsoft-dynamics" },
@@ -35,6 +37,7 @@ const mobileNavData = [
   {
     label: "Services",
     items: [
+      { label: "Discovery Solution", href: "/discovery-solution" },
       { label: "Oracle NetSuite", href: "/services/oracle-netsuite" },
       { label: "Odoo", href: "/services/odoo" },
       { label: "Microsoft Dynamics", href: "/services/microsoft-dynamics" },
@@ -75,24 +78,31 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-3 lg:gap-4 flex-wrap justify-end">
-          {navData.map((item, i) =>
-            item.children ? (
-              <Dropdown key={i} item={item} />
-            ) : (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <Link
-                  href={item.route}
-                  className="px-4 lg:px-5 py-2 rounded-full bg-[#2F7F78] text-white text-xs lg:text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
+          {navData.map((item, i) => (
+            <div key={i} className="contents">
+              {item.label === "Contact" && (
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                  <OdooNavLink className="px-4 lg:px-5 py-2 rounded-full bg-[#002050] text-white text-xs lg:text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300" />
+                </motion.div>
+              )}
+
+              {item.children ? (
+                <Dropdown item={item} />
+              ) : (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
                 >
-                  {item.label}
-                </Link>
-              </motion.div>
-            ),
-          )}
+                  <Link
+                    href={item.route}
+                    className="px-4 lg:px-5 py-2 rounded-full bg-[#2F7F78] text-white text-xs lg:text-sm font-semibold whitespace-nowrap shadow-md hover:bg-[#fbc02d] hover:text-[#002050] transition-all duration-300"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              )}
+            </div>
+          ))}
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
             <Link
@@ -113,12 +123,18 @@ const Navbar = () => {
             <div className="rounded-b-xl bg-[#002050] py-5 px-5 shadow-2xl">
               <nav className="flex flex-col gap-3 text-gray-200 text-[15px]">
                 {mobileNavData.map((item, i) => (
-                  <MobileNavItem
-                    key={i}
-                    label={item.label}
-                    href={item.href}
-                    items={item.items}
-                  />
+                  <div key={i} className="contents">
+                    {item.label === "Contact" && (
+                      <OdooNavLink className="flex w-full cursor-pointer items-center rounded-lg px-4 py-3 text-gray-200 font-medium text-[15px] border border-transparent hover:bg-white/10 hover:text-[#fbc02d] hover:border-white/10 active:scale-[0.98] active:bg-white/15 transition-all duration-200">
+                        Odoo
+                      </OdooNavLink>
+                    )}
+                    <MobileNavItem
+                      label={item.label}
+                      href={item.href}
+                      items={item.items}
+                    />
+                  </div>
                 ))}
 
                 <div className="mt-4 flex justify-center">

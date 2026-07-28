@@ -4,11 +4,19 @@ import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_87x2NZrA_GZy3vv1JKHgPW1MS5k2qMuTx';
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+if (!RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY environment variable is required');
+}
+
 const resend = new Resend(RESEND_API_KEY);
 
 const VERIFIED_FROM = 'onboarding@resend.dev';
 const DEFAULT_FROM = 'onboarding@resend.dev';
+
+const getErrorMessage = (error: unknown) =>
+  error instanceof Error ? error.message : String(error);
 
 export async function POST(req: Request) {
   try {
@@ -34,7 +42,7 @@ export async function POST(req: Request) {
 
     // Send email to user
     let userEmailData;
-    let userEmailError: any = null;
+    let userEmailError: unknown = null;
     try {
       userEmailData = await resend.emails.send({
         from: VERIFIED_FROM,
@@ -89,7 +97,7 @@ export async function POST(req: Request) {
     }
     // Send notification email to your business email
     let businessEmailData;
-    let businessEmailError: any = null;
+    let businessEmailError: unknown = null;
     try {
       businessEmailData = await resend.emails.send({
         from: VERIFIED_FROM,
@@ -134,10 +142,10 @@ export async function POST(req: Request) {
     }
     const errors = [];
     if (userEmailError) {
-      errors.push({ userEmailError: userEmailError.message || String(userEmailError) });
+      errors.push({ userEmailError: getErrorMessage(userEmailError) });
     }
     if (businessEmailError) {
-      errors.push({ businessEmailError: businessEmailError.message || String(businessEmailError) });
+      errors.push({ businessEmailError: getErrorMessage(businessEmailError) });
     }
 
     if (errors.length > 0) {
@@ -158,8 +166,8 @@ export async function POST(req: Request) {
       userEmail: userEmailData,
       businessEmail: businessEmailData,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error sending email:", error);
-    return Response.json({ error: error.message }, { status: 500 });
+    return Response.json({ error: getErrorMessage(error) }, { status: 500 });
   }
 }

@@ -20,6 +20,7 @@ const certificates: StaticImageData[] = [
 const footerNavOptions = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
+  { name: "Discovery Solution", path: "/discovery-solution" },
   { name: "Contact", path: "mailto:mktg@atisunyainfotech.com" },
   { name: "About Us", path: "/about-us" },
 ];
@@ -52,10 +53,10 @@ const Footer = () => {
             </h3>
 
             <p className="text-sm text-gray-400 leading-relaxed">
-              Delivering{" "}
-              <span className="text-white font-medium">ERP Excellence</span>,
-              integration strategy, and enterprise-grade digital transformation
-              solutions engineered for scalable growth.
+              Practical{" "}
+              <span className="text-white font-medium">ERP consulting</span>,
+              cloud implementation, business automation, and support for teams
+              that want cleaner operations and stronger reporting.
             </p>
           </div>
 

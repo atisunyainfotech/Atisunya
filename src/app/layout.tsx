@@ -1,24 +1,9 @@
 import type { Metadata } from "next";
-import { Golos_Text, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/globals/footer";
 import Navbar from "@/components/globals/header-nav";
-
-/* Fonts */
-
-const golosText = Golos_Text({
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-primary",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  weight: ["200", "300", "400", "500", "600", "700"],
-  variable: "--font-secondary",
-  subsets: ["latin"],
-});
 
 /* SEO Metadata */
 
@@ -29,7 +14,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "AtiSunya Infotech delivers end-to-end ERP implementation,Oracle Netsuite , NetSuite consulting, SAP, Microsoft Dynamics 365, Zoho, and digital transformation services for businesses across India.",
+    "AtiSunya Infotech provides ERP discovery, NetSuite implementation, Odoo consulting, Microsoft Dynamics 365 services, SAP support, Zoho automation, and cloud ERP solutions for businesses in India and global markets.",
 
   keywords: [
     "Best ERP Company in Noida",
@@ -46,6 +31,10 @@ export const metadata: Metadata = {
     "Zoho Implementation Services",
     "Business Automation Solutions",
     "ERP Support and Maintenance",
+    "ERP Discovery Workshop",
+    "ERP Implementation Roadmap",
+    "Odoo ERP Consulting",
+    "Power BI Dashboard Services",
     "ERP Solutions for Manufacturing",
     "ERP for Retail Industry",
     "ERP for Healthcare",
@@ -60,7 +49,7 @@ export const metadata: Metadata = {
       "AtiSunya Infotech | ERP Implementation & Digital Transformation Company",
 
     description:
-      "Leading ERP implementation partner providing NetSuite, SAP, Microsoft Dynamics 365, Zoho, and cloud ERP solutions.",
+      "ERP consulting and implementation partner for NetSuite, Odoo, SAP, Microsoft Dynamics 365, Zoho, Salesforce, automation, analytics, and cloud operations.",
 
     url: "https://atisunyainfotech.com",
 
@@ -93,7 +82,7 @@ export default function RootLayout({
     logo: "https://atisunyainfotech.com/logo.png",
 
     description:
-      "ERP implementation and digital transformation company providing Oracle NetSuite, SAP, Microsoft Dynamics 365, and Zoho services.",
+      "ERP discovery, implementation, automation, analytics, and support company providing Oracle NetSuite, Odoo, SAP, Microsoft Dynamics 365, Zoho, and Microsoft cloud services.",
 
     address: {
       "@type": "PostalAddress",
@@ -120,7 +109,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${golosText.variable} ${inter.variable} antialiased text-blue font-secondary`}
+        className="font-vars antialiased text-blue font-secondary"
       >
         <Navbar />
 

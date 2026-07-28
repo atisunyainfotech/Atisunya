@@ -1,42 +1,9 @@
 "use client";
 
-import { motion, useInView, animate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { FaCloud, FaRobot, FaProjectDiagram } from "react-icons/fa";
-
-const stats = [
-  { number: 50, suffix: "+", label: "Enterprise Projects" },
-  { number: 98, suffix: "%", label: "Client Satisfaction" },
-  { number: 40, suffix: "+", label: "Industry Experts" },
-  { number: 8, suffix: "+", label: "Years Experience" }
-];
-
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(0, value, {
-        duration: 2,
-        ease: "easeOut",
-        onUpdate(latest) {
-          setCount(Math.floor(latest));
-        }
-      });
-
-      return () => controls.stop();
-    }
-  }, [isInView, value]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 export default function EnterprisePremiumSection() {
   const [loading, setLoading] = useState(true);
@@ -134,9 +101,12 @@ export default function EnterprisePremiumSection() {
       >
         {/* Background */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/enterprise-bg.jpg"
             alt="Enterprise Background"
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover"
           />
         </div>
@@ -162,9 +132,9 @@ export default function EnterprisePremiumSection() {
             <div className="w-28 h-[3px] bg-[#fbc02d] mx-auto my-6"></div>
 
             <p className="text-gray-200 text-xl max-w-3xl mx-auto leading-relaxed">
-              We design scalable digital ecosystems powered by enterprise ERP,
-              secure cloud infrastructure, and intelligent automation to
-              accelerate modern business transformation.
+              We build ERP, cloud, analytics, and automation programs that
+              remove manual friction, connect business data, and give leaders a
+              clearer way to run modern operations.
             </p>
           </motion.div>
 
@@ -173,17 +143,17 @@ export default function EnterprisePremiumSection() {
             {[
               {
                 title: "Enterprise ERP Integration",
-                text: "Connect finance, operations, supply chain, and analytics in a unified ERP ecosystem designed for enterprise scale.",
+                text: "Connect finance, operations, supply chain, CRM, and analytics so teams stop chasing scattered records.",
                 icon: <FaProjectDiagram />
               },
               {
                 title: "Secure Cloud Architecture",
-                text: "Future-ready cloud infrastructure with enterprise-grade security and scalable digital backbone.",
+                text: "Design cloud foundations with access control, performance planning, backup discipline, and room to expand.",
                 icon: <FaCloud />
               },
               {
                 title: "AI & Data Intelligence",
-                text: "Transform enterprise data into predictive insights and automate strategic decisions with AI-driven analytics.",
+                text: "Use dashboards, forecasts, and automation to turn daily business signals into faster decisions.",
                 icon: <FaRobot />
               }
             ].map((card, i) => (

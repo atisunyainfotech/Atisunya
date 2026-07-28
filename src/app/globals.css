@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-primary: var(--font-primary);
-  --font-secondary: var(--font-secondary);
+  --font-primary: "Golos Text", "Segoe UI", Arial, sans-serif;
+  --font-secondary: "Inter", "Segoe UI", Arial, sans-serif;
   --color-white: #f9fbfc;
   --color-white-secondary: #d6d6d6;
   --color-blue: #0b1f74;
