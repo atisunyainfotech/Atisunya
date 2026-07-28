@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
-  BadgeCheck,
   BarChart3,
   CheckCircle2,
   ClipboardList,
@@ -17,7 +16,6 @@ import {
 
 type ModulePage = {
   title: string;
-  kicker: string;
   image: string;
   accent: string;
   intro: string;
@@ -30,7 +28,6 @@ type ModulePage = {
 const pages: Record<string, ModulePage> = {
   "customer-relationship-management": {
     title: "Customer Relationship Management",
-    kicker: "Sales, service and customer visibility",
     image: "/images/crm.jpg",
     accent: "#2F7F78",
     intro:
@@ -52,7 +49,6 @@ const pages: Record<string, ModulePage> = {
   },
   "financial-management-solutions": {
     title: "Financial Management Solutions",
-    kicker: "Accounting control with real-time insight",
     image: "/images/finance.jpg",
     accent: "#C74634",
     intro:
@@ -74,7 +70,6 @@ const pages: Record<string, ModulePage> = {
   },
   "ecommerce-retail-management": {
     title: "Ecommerce & Retail Management",
-    kicker: "Connected selling across stores and channels",
     image: "/images/ecommerce.jpg",
     accent: "#714B67",
     intro:
@@ -96,7 +91,6 @@ const pages: Record<string, ModulePage> = {
   },
   "inventory-order-management": {
     title: "Inventory & Order Management",
-    kicker: "Stock movement with dependable fulfillment",
     image: "/images/inventory.jpg",
     accent: "#0078D4",
     intro:
@@ -118,7 +112,6 @@ const pages: Record<string, ModulePage> = {
   },
   "supply-chain-management": {
     title: "Supply Chain Management",
-    kicker: "Procurement, planning and supplier coordination",
     image: "/images/supplychain.jpg",
     accent: "#0FAAFF",
     intro:
@@ -140,7 +133,6 @@ const pages: Record<string, ModulePage> = {
   },
   "data-analytics-management": {
     title: "Data & Analytics Management",
-    kicker: "Reporting that leaders can trust",
     image: "/images/analytics.jpg",
     accent: "#002050",
     intro:
@@ -162,7 +154,6 @@ const pages: Record<string, ModulePage> = {
   },
   "human-capital-management": {
     title: "Human Capital Management",
-    kicker: "People operations with structure and care",
     image: "/images/hcm.jpg",
     accent: "#E83E8C",
     intro:
@@ -184,7 +175,6 @@ const pages: Record<string, ModulePage> = {
   },
   "professional-services-automation": {
     title: "Professional Services Automation",
-    kicker: "Project delivery, resources and billing alignment",
     image: "/images/services.jpg",
     accent: "#5E5E5E",
     intro:
@@ -206,7 +196,6 @@ const pages: Record<string, ModulePage> = {
   },
   "industry-specific-netsuite-solutions": {
     title: "Industry-Specific NetSuite Solutions",
-    kicker: "Tailored ERP for real operating models",
     image: "/images/industry.jpg",
     accent: "#FBC02D",
     intro:
@@ -259,7 +248,6 @@ export default async function ModuleDetailPage({ params }: PageProps) {
   return (
     <main className="overflow-hidden bg-white text-[#101828]">
       <section className="relative isolate min-h-[calc(100vh-82px)] overflow-hidden bg-[#f7f9fc]">
-        <div className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundColor: page.accent }} />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_14%_16%,rgba(0,32,80,0.10),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(47,127,120,0.12),transparent_30%)]" />
 
         <div className="container grid min-h-[calc(100vh-82px)] items-center gap-12 py-20 lg:grid-cols-[0.98fr_1.02fr]">
@@ -268,10 +256,7 @@ export default async function ModuleDetailPage({ params }: PageProps) {
               <ArrowLeft size={17} />
               Back to Modules
             </Link>
-            <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-              {page.kicker}
-            </p>
-            <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[1.02] text-[#002050] sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-black leading-[1.02] text-[#002050] sm:text-6xl lg:text-7xl">
               {page.title}
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600">
@@ -279,7 +264,7 @@ export default async function ModuleDetailPage({ params }: PageProps) {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               {page.points.map((point) => (
-                <span key={point} className="rounded-[8px] border border-[#002050]/10 bg-white px-4 py-3 text-sm font-black text-[#002050] shadow-[0_12px_30px_rgba(0,32,80,0.07)]">
+                <span key={point} className="rounded-[8px] border border-[#002050]/10 bg-white px-4 py-3 text-sm font-black text-[#002050] shadow-[0_12px_30px_rgba(0,32,80,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-[#fbc02d]/55 hover:shadow-[0_18px_42px_rgba(0,32,80,0.14)]">
                   {point}
                 </span>
               ))}
@@ -288,13 +273,13 @@ export default async function ModuleDetailPage({ params }: PageProps) {
 
           <div className="relative">
             <div className="absolute -inset-5 -z-10 rounded-[26px] opacity-20 blur-2xl" style={{ backgroundColor: page.accent }} />
-            <div className="overflow-hidden rounded-[20px] border border-[#002050]/10 bg-white p-3 shadow-[0_32px_90px_rgba(0,32,80,0.14)]">
+            <div className="group overflow-hidden rounded-[20px] border border-[#002050]/10 bg-white p-3 shadow-[0_32px_90px_rgba(0,32,80,0.14)] transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/55 hover:shadow-[0_44px_120px_rgba(0,32,80,0.22)]">
               <div className="relative aspect-[16/11] overflow-hidden rounded-[14px]">
-                <Image src={page.image} alt={page.title} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                <Image src={page.image} alt={page.title} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
               </div>
               <div className="grid gap-3 p-4 sm:grid-cols-3">
                 {page.outcomes.slice(0, 3).map((item) => (
-                  <div key={item} className="rounded-[8px] px-4 py-3 text-sm font-black" style={{ backgroundColor: page.accent, color: foreground }}>
+                  <div key={item} className="rounded-[8px] px-4 py-3 text-sm font-black shadow-[0_12px_26px_rgba(0,32,80,0.10)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(0,32,80,0.18)]" style={{ backgroundColor: page.accent, color: foreground }}>
                     {item}
                   </div>
                 ))}
@@ -307,10 +292,7 @@ export default async function ModuleDetailPage({ params }: PageProps) {
       <section className="bg-white py-24">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-              What AtiSunya Infotech Configures
-            </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight text-[#002050] md:text-5xl">
+            <h2 className="text-4xl font-black leading-tight text-[#002050] md:text-5xl">
               Practical capabilities for daily business use
             </h2>
           </div>
@@ -318,8 +300,8 @@ export default async function ModuleDetailPage({ params }: PageProps) {
             {page.capabilities.map((capability, index) => {
               const Icon = icons[index % icons.length];
               return (
-                <div key={capability} className="group rounded-[10px] border border-[#002050]/10 bg-[#f7f9fc] p-7 shadow-[0_16px_40px_rgba(0,32,80,0.06)] transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_26px_64px_rgba(0,32,80,0.11)]">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[8px]" style={{ backgroundColor: page.accent, color: foreground }}>
+                <div key={capability} className="group rounded-[10px] border border-[#002050]/10 bg-[#f7f9fc] p-7 shadow-[0_16px_40px_rgba(0,32,80,0.06)] ring-1 ring-transparent transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/55 hover:bg-white hover:shadow-[0_28px_70px_rgba(0,32,80,0.15)] hover:ring-[#fbc02d]/25">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[8px] shadow-[0_14px_30px_rgba(0,32,80,0.16)] transition-all duration-500 group-hover:scale-110" style={{ backgroundColor: page.accent, color: foreground }}>
                     <Icon size={28} />
                   </div>
                   <p className="text-lg font-bold leading-8 text-slate-700">{capability}</p>
@@ -333,10 +315,7 @@ export default async function ModuleDetailPage({ params }: PageProps) {
       <section className="bg-[#002050] py-24 text-white">
         <div className="container grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-              Delivery Method
-            </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">
               A focused route from discovery to adoption
             </h2>
             <p className="mt-6 text-lg leading-8 text-white/72">
@@ -345,7 +324,7 @@ export default async function ModuleDetailPage({ params }: PageProps) {
           </div>
           <div className="space-y-4">
             {page.delivery.map((step, index) => (
-              <div key={step} className="flex gap-5 rounded-[10px] border border-white/12 bg-white/8 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]">
+              <div key={step} className="group flex gap-5 rounded-[10px] border border-white/12 bg-white/8 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#fbc02d]/45 hover:bg-white/12 hover:shadow-[0_22px_54px_rgba(0,0,0,0.20)]">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] text-sm font-black" style={{ backgroundColor: page.accent, color: foreground }}>
                   {String(index + 1).padStart(2, "0")}
                 </div>
@@ -359,21 +338,20 @@ export default async function ModuleDetailPage({ params }: PageProps) {
       <section className="bg-[#f7f9fc] py-24">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
-            <BadgeCheck className="mx-auto mb-6" size={42} style={{ color: page.accent }} />
             <h2 className="text-4xl font-black leading-tight text-[#002050] md:text-5xl">
               Outcomes your teams can measure
             </h2>
           </div>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {page.outcomes.map((outcome) => (
-              <div key={outcome} className="rounded-[10px] border border-[#002050]/10 bg-white p-6 shadow-[0_16px_40px_rgba(0,32,80,0.07)]">
+              <div key={outcome} className="group rounded-[10px] border border-[#002050]/10 bg-white p-6 shadow-[0_16px_40px_rgba(0,32,80,0.07)] ring-1 ring-transparent transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/55 hover:shadow-[0_28px_70px_rgba(0,32,80,0.15)] hover:ring-[#fbc02d]/25">
                 <CheckCircle2 className="mb-5" size={28} style={{ color: page.accent }} />
                 <h3 className="text-xl font-black text-[#002050]">{outcome}</h3>
               </div>
             ))}
           </div>
           <div className="mt-14 text-center">
-            <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[8px] bg-[#fbc02d] px-9 py-4 font-black text-[#002050] shadow-[0_18px_38px_rgba(251,192,45,0.28)] transition hover:-translate-y-1 hover:bg-[#002050] hover:text-white">
+            <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[8px] bg-[#fbc02d] px-9 py-4 font-black text-[#002050] shadow-[0_18px_40px_rgba(251,192,45,0.34)] ring-1 ring-[#fbc02d]/30 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#002050] hover:text-white hover:shadow-[0_24px_58px_rgba(0,32,80,0.28)] hover:ring-[#002050]/30">
               Talk to AtiSunya Infotech
               <ArrowRight size={19} />
             </Link>

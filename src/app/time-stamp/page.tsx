@@ -4,14 +4,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BarChart3,
   CalendarClock,
   CheckCircle2,
   Clock3,
   Fingerprint,
   MapPinned,
   ShieldCheck,
-  UsersRound,
 } from "lucide-react";
 
 const features = [
@@ -49,7 +47,6 @@ export default function TimeStampPage() {
     <main className="overflow-hidden bg-[#F6F9FC] text-[#0D1730]">
       <section className="relative isolate min-h-[calc(100vh-82px)] overflow-hidden bg-[#002050] text-white">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(126deg,#002050_0%,#0C4C83_48%,#2F7F78_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-1.5 bg-[#fbc02d]" />
 
         <div className="container grid min-h-[calc(100vh-82px)] gap-14 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <motion.div initial={{ opacity: 0, y: 34 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -62,17 +59,17 @@ export default function TimeStampPage() {
               and real-time HR reporting.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[10px] bg-[#fbc02d] px-8 py-4 font-black text-[#002050] transition hover:-translate-y-1 hover:bg-white">
+              <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[10px] bg-[#fbc02d] px-8 py-4 font-black text-[#002050] shadow-[0_18px_40px_rgba(251,192,45,0.34)] ring-1 ring-[#fbc02d]/30 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_58px_rgba(251,192,45,0.44)] hover:ring-white/70">
                 Schedule Demo
                 <ArrowRight size={19} />
               </Link>
-              <Link href="/" className="inline-flex items-center gap-3 rounded-[10px] border border-white/18 bg-white/10 px-8 py-4 font-bold text-white transition hover:-translate-y-1 hover:bg-white/16">
+              <Link href="/" className="inline-flex items-center gap-3 rounded-[10px] border border-white/18 bg-white/10 px-8 py-4 font-bold text-white shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/16 hover:shadow-[0_22px_52px_rgba(0,0,0,0.24)]">
                 Back to Home
               </Link>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[24px] border border-white/14 bg-white/10 p-5 shadow-[0_36px_100px_rgba(0,0,0,0.28)]">
+          <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="group rounded-[24px] border border-white/14 bg-white/10 p-5 shadow-[0_36px_100px_rgba(0,0,0,0.28)] transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/45 hover:bg-white/14 hover:shadow-[0_44px_120px_rgba(0,0,0,0.36)]">
             <div className="rounded-[18px] bg-white p-6 text-[#002050]">
               <div className="flex items-center justify-between border-b border-[#002050]/10 pb-5">
                 <div>
@@ -83,13 +80,13 @@ export default function TimeStampPage() {
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {outcomes.map((item, index) => (
-                  <div key={item} className="rounded-[14px] p-5 text-white" style={{ backgroundColor: index % 2 === 0 ? "#2F7F78" : "#002050" }}>
+                  <div key={item} className="rounded-[14px] p-5 text-white shadow-[0_14px_30px_rgba(0,32,80,0.14)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,32,80,0.22)]" style={{ backgroundColor: index % 2 === 0 ? "#2F7F78" : "#002050" }}>
                     <CheckCircle2 className="mb-5 text-[#fbc02d]" size={26} />
                     <p className="font-black leading-7">{item}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-6 rounded-[14px] bg-[#F6F9FC] p-5">
+              <div className="mt-6 rounded-[14px] bg-[#F6F9FC] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_42px_rgba(0,32,80,0.12)]">
                 <div className="mb-4 flex items-center justify-between">
                   <span className="font-black">Weekly punctuality</span>
                   <span className="rounded-full bg-[#fbc02d] px-3 py-1 text-xs font-black">96.4%</span>
@@ -116,8 +113,8 @@ export default function TimeStampPage() {
             {features.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-[16px] border border-[#002050]/10 bg-white p-7 shadow-[0_16px_40px_rgba(0,32,80,0.07)]">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[14px] bg-[#2F7F78] text-white">
+                <div key={item.title} className="group rounded-[16px] border border-[#002050]/10 bg-white p-7 shadow-[0_16px_40px_rgba(0,32,80,0.07)] ring-1 ring-transparent transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/55 hover:shadow-[0_28px_70px_rgba(0,32,80,0.15)] hover:ring-[#fbc02d]/25">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[14px] bg-[#2F7F78] text-white shadow-[0_14px_30px_rgba(47,127,120,0.24)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#002050] group-hover:shadow-[0_18px_42px_rgba(0,32,80,0.26)]">
                     <Icon size={28} />
                   </div>
                   <h3 className="text-xl font-black text-[#002050]">{item.title}</h3>

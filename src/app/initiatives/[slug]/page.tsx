@@ -13,7 +13,6 @@ import {
 
 type InitiativePage = {
   title: string;
-  eyebrow: string;
   intro: string;
   accent: string;
   pillars: string[];
@@ -24,7 +23,6 @@ type InitiativePage = {
 const pages: Record<string, InitiativePage> = {
   "ai-advancement": {
     title: "Artificial Intelligence Advancement",
-    eyebrow: "Responsible AI for faster public decisions",
     intro:
       "AtiSunya Infotech helps teams identify high-value AI use cases, prepare trusted data, and launch automation that improves service speed without losing governance.",
     accent: "#2F7F78",
@@ -44,7 +42,6 @@ const pages: Record<string, InitiativePage> = {
   },
   "go-green-sustainability": {
     title: "Go Green & Sustainability",
-    eyebrow: "Digital systems for measurable sustainability",
     intro:
       "We build technology programs that reduce paper-heavy work, improve resource visibility, and make sustainability reporting easier to trust.",
     accent: "#6FAF45",
@@ -64,7 +61,6 @@ const pages: Record<string, InitiativePage> = {
   },
   "drug-free-awareness": {
     title: "Drug-Free Awareness Programs",
-    eyebrow: "Outreach technology with reach and accountability",
     intro:
       "AtiSunya Infotech supports awareness programs with campaign planning, citizen engagement, event tracking, and reporting systems that keep outreach coordinated.",
     accent: "#FBC02D",
@@ -115,7 +111,6 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
     <main className="overflow-hidden bg-white text-[#002050]">
       <section className="relative isolate bg-[#002050] py-24 text-white">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_16%_18%,rgba(47,127,120,0.36),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(251,192,45,0.26),transparent_24%)]" />
-        <div className="absolute left-0 top-0 h-1.5 w-full" style={{ backgroundColor: page.accent }} />
 
         <div className="container">
           <Link href="/#initiatives" className="mb-10 inline-flex items-center gap-2 text-sm font-black text-white/80 transition hover:text-[#fbc02d]">
@@ -125,10 +120,7 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
 
           <div className="grid gap-12 lg:grid-cols-[1fr_0.78fr] lg:items-center">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-                {page.eyebrow}
-              </p>
-              <h1 className="mt-5 max-w-5xl text-5xl font-black leading-tight md:text-7xl">
+              <h1 className="max-w-5xl text-5xl font-black leading-tight md:text-7xl">
                 {page.title}
               </h1>
               <p className="mt-7 max-w-3xl text-lg leading-8 text-white/76">
@@ -136,10 +128,10 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="rounded-[8px] border border-white/14 bg-white/10 p-6 shadow-[0_26px_70px_rgba(0,0,0,0.20)]">
+            <div className="group rounded-[8px] border border-white/14 bg-white/10 p-6 shadow-[0_26px_70px_rgba(0,0,0,0.20)] transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/45 hover:bg-white/14 hover:shadow-[0_38px_100px_rgba(0,0,0,0.30)]">
               <div className="grid gap-4">
                 {page.outcomes.map((outcome) => (
-                  <div key={outcome} className="flex items-center gap-3 rounded-[8px] bg-white p-4 font-black text-[#002050]">
+                  <div key={outcome} className="flex items-center gap-3 rounded-[8px] bg-white p-4 font-black text-[#002050] shadow-[0_12px_26px_rgba(0,32,80,0.10)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(0,32,80,0.18)]">
                     <BadgeCheck size={22} style={{ color: page.accent }} />
                     {outcome}
                   </div>
@@ -153,10 +145,7 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
       <section className="bg-[#f7f9fc] py-24">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-              Program Capabilities
-            </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">
               Built for action, adoption, and measurable progress
             </h2>
           </div>
@@ -166,8 +155,8 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
               const Icon = icons[index % icons.length];
 
               return (
-                <div key={pillar} className="rounded-[8px] border border-[#002050]/10 bg-white p-7 shadow-[0_16px_40px_rgba(0,32,80,0.07)]">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[8px]" style={{ backgroundColor: page.accent, color: textOnAccent }}>
+                <div key={pillar} className="group rounded-[8px] border border-[#002050]/10 bg-white p-7 shadow-[0_16px_40px_rgba(0,32,80,0.07)] ring-1 ring-transparent transition-all duration-500 hover:-translate-y-2 hover:border-[#fbc02d]/55 hover:shadow-[0_28px_70px_rgba(0,32,80,0.15)] hover:ring-[#fbc02d]/25">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[8px] shadow-[0_14px_30px_rgba(0,32,80,0.16)] transition-all duration-500 group-hover:scale-110" style={{ backgroundColor: page.accent, color: textOnAccent }}>
                     <Icon size={28} />
                   </div>
                   <p className="text-lg font-bold leading-8 text-slate-700">{pillar}</p>
@@ -181,10 +170,7 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
       <section className="bg-white py-24">
         <div className="container grid gap-12 lg:grid-cols-[0.78fr_1fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: page.accent }}>
-              Delivery Roadmap
-            </p>
-            <h2 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">
               From idea to field-ready digital program
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
@@ -195,7 +181,7 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
 
           <div className="space-y-4">
             {page.roadmap.map((step, index) => (
-              <div key={step} className="flex gap-5 rounded-[8px] border border-[#002050]/10 bg-[#f7f9fc] p-5">
+              <div key={step} className="group flex gap-5 rounded-[8px] border border-[#002050]/10 bg-[#f7f9fc] p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-[#fbc02d]/55 hover:bg-white hover:shadow-[0_22px_54px_rgba(0,32,80,0.12)]">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] text-sm font-black" style={{ backgroundColor: page.accent, color: textOnAccent }}>
                   {String(index + 1).padStart(2, "0")}
                 </div>
@@ -213,7 +199,7 @@ export default async function InitiativeDetailPage({ params }: PageProps) {
             Make your next initiative easier to run and easier to measure.
           </h2>
           <div className="mt-10">
-            <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[8px] bg-[#fbc02d] px-9 py-4 font-black text-[#002050] transition hover:-translate-y-1 hover:bg-white">
+            <Link href="/contact-us" className="inline-flex items-center gap-3 rounded-[8px] bg-[#fbc02d] px-9 py-4 font-black text-[#002050] shadow-[0_18px_40px_rgba(251,192,45,0.34)] ring-1 ring-[#fbc02d]/30 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_58px_rgba(251,192,45,0.44)] hover:ring-white/70">
               Discuss This Program
               <ArrowRight size={19} />
             </Link>
