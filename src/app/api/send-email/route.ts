@@ -4,14 +4,6 @@ import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-
-if (!RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY environment variable is required');
-}
-
-const resend = new Resend(RESEND_API_KEY);
-
 const VERIFIED_FROM = 'onboarding@resend.dev';
 const DEFAULT_FROM = 'onboarding@resend.dev';
 
@@ -20,6 +12,16 @@ const getErrorMessage = (error: unknown) =>
 
 export async function POST(req: Request) {
   try {
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+    if (!RESEND_API_KEY) {
+      return Response.json(
+        { error: "RESEND_API_KEY environment variable is required" },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(RESEND_API_KEY);
     const { name, email, contact, requirements } = await req.json();
 
     // Validate required fields
